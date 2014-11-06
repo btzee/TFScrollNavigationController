@@ -10,6 +10,13 @@
 
 @interface TFScrollNavigationRootViewController ()<UIScrollViewDelegate>
 
+/** 内容scrollView (重写属性的目的 : 外界只读 , 内部可读可写) */
+@property (nonatomic , weak , readwrite) UIScrollView * contentScrollView;
+
+/** 自定义导航栏 (重写属性的目的 : 外界只读 , 内部可读可写) */
+@property (nonatomic , weak , readwrite) TFScrollNavigationBar * myNavigationBar;
+
+
 @end
 
 @implementation TFScrollNavigationRootViewController
@@ -27,7 +34,12 @@
         /** 将控制器数组添加进子控制器组里 */
         [self addChildViewControllers:controllers];
         
+        /** 添加自定义导航栏 */
+        TFScrollNavigationBar * navigationBar = [[TFScrollNavigationBar alloc] initWithControllers:controllers];
         
+        self.myNavigationBar = navigationBar;
+        [self.view addSubview:navigationBar];
+
     }
     
     
@@ -91,6 +103,9 @@
     
     /** 布局自身的view */
     [self layoutSelfView];
+    
+    /** 布局自定义导航栏 */
+    [self layoutMyNavigationBar];
 
     /** 布局内容scrollView */
     [self layoutMyContentScrollView];
@@ -131,6 +146,11 @@
     self.view.frame = self.view.superview.bounds;
 }
 
+/** 布局自定义导航栏 */
+- (void)layoutMyNavigationBar
+{
+    self.myNavigationBar.frame = self.navigationController.navigationBar.frame;
+}
 
 /** 布局内容scrollView */
 - (void)layoutMyContentScrollView

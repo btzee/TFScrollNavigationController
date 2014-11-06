@@ -10,11 +10,15 @@
 
 #import "TFScrollNavigationRootViewController.h"
 
+#import "TFScrollNavigationBar.h"
+
 
 @interface TFScrollNavigationController ()
 
 
 @property (nonatomic , weak) TFScrollNavigationRootViewController * myRootViewController;
+
+@property (nonatomic , weak) TFScrollNavigationBar * myNavigationBar;
 
 @end
 
@@ -32,8 +36,12 @@
     if (self)
     {
         self.myRootViewController = rootViewController;
-
-    
+        self.myNavigationBar = rootViewController.myNavigationBar;
+        
+        UIButton * button1 = [UIButton buttonWithType:UIButtonTypeContactAdd];
+        UIButton * button2 = [UIButton buttonWithType:UIButtonTypeContactAdd];
+        
+        [self.myNavigationBar addAccessoryButtons:@[button1,button2]];
     
     }
     
@@ -52,7 +60,7 @@
     
     self.navigationBar.hidden = YES;
     
-    NSLog(@"[%s--第%d行]--[]",__func__,__LINE__);
+  
 }
 
 
@@ -75,6 +83,7 @@
     /** 布局自身的view */
     [self layoutSelfView];
     
+
 }
 
 
@@ -86,6 +95,8 @@
 {
     self.view.frame = self.view.superview.bounds;
 }
+
+
 
 
 #pragma mark - 其他

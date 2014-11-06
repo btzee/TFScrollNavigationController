@@ -18,6 +18,8 @@
 		0429DBCF1A0B691700C7851C /* BTTestAController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429DBCE1A0B691700C7851C /* BTTestAController.m */; };
 		0429DBD21A0B70C800C7851C /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429DBD11A0B70C800C7851C /* TestViewController.m */; };
 		0429DBD51A0B77F500C7851C /* BTTestBController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429DBD41A0B77F500C7851C /* BTTestBController.m */; };
+		0429DBD81A0B7CE700C7851C /* TFScrollNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429DBD71A0B7CE700C7851C /* TFScrollNavigationBar.m */; };
+		0429DBDC1A0B9B4000C7851C /* UIColor+BTTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429DBDB1A0B9B4000C7851C /* UIColor+BTTools.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,10 @@
 		0429DBD11A0B70C800C7851C /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		0429DBD31A0B77F500C7851C /* BTTestBController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTTestBController.h; sourceTree = "<group>"; };
 		0429DBD41A0B77F500C7851C /* BTTestBController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTTestBController.m; sourceTree = "<group>"; };
+		0429DBD61A0B7CE700C7851C /* TFScrollNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFScrollNavigationBar.h; sourceTree = "<group>"; };
+		0429DBD71A0B7CE700C7851C /* TFScrollNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFScrollNavigationBar.m; sourceTree = "<group>"; };
+		0429DBDA1A0B9B4000C7851C /* UIColor+BTTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BTTools.h"; sourceTree = "<group>"; };
+		0429DBDB1A0B9B4000C7851C /* UIColor+BTTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BTTools.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +99,7 @@
 		0429DB9B1A0B5FD300C7851C /* 20141106-02ScrollNavigation框架 */ = {
 			isa = PBXGroup;
 			children = (
+				0429DBD91A0B9B4000C7851C /* UIColor */,
 				0429DBCC1A0B68EB00C7851C /* testView */,
 				0429DBC51A0B62E000C7851C /* TFScrollNavigationController */,
 				0429DBA01A0B5FD300C7851C /* AppDelegate.h */,
@@ -140,6 +147,8 @@
 				0429DBC71A0B62E000C7851C /* TFScrollNavigationController.m */,
 				0429DBC91A0B658F00C7851C /* TFScrollNavigationRootViewController.h */,
 				0429DBCA1A0B658F00C7851C /* TFScrollNavigationRootViewController.m */,
+				0429DBD61A0B7CE700C7851C /* TFScrollNavigationBar.h */,
+				0429DBD71A0B7CE700C7851C /* TFScrollNavigationBar.m */,
 			);
 			path = TFScrollNavigationController;
 			sourceTree = "<group>";
@@ -153,6 +162,15 @@
 				0429DBD41A0B77F500C7851C /* BTTestBController.m */,
 			);
 			name = testView;
+			sourceTree = "<group>";
+		};
+		0429DBD91A0B9B4000C7851C /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				0429DBDA1A0B9B4000C7851C /* UIColor+BTTools.h */,
+				0429DBDB1A0B9B4000C7851C /* UIColor+BTTools.m */,
+			);
+			path = UIColor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,9 +273,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0429DBD81A0B7CE700C7851C /* TFScrollNavigationBar.m in Sources */,
 				0429DBD21A0B70C800C7851C /* TestViewController.m in Sources */,
 				0429DBA21A0B5FD300C7851C /* AppDelegate.m in Sources */,
 				0429DBCB1A0B658F00C7851C /* TFScrollNavigationRootViewController.m in Sources */,
+				0429DBDC1A0B9B4000C7851C /* UIColor+BTTools.m in Sources */,
 				0429DBD51A0B77F500C7851C /* BTTestBController.m in Sources */,
 				0429DB9F1A0B5FD300C7851C /* main.m in Sources */,
 				0429DBCF1A0B691700C7851C /* BTTestAController.m in Sources */,

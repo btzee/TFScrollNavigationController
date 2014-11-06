@@ -1,0 +1,312 @@
+//
+//  TFScrollNavigationBar.m
+//  20141106-02ScrollNavigation框架
+//
+//  Created by btz-mac on 14-11-6.
+//  Copyright (c) 2014年 朱佰通. All rights reserved.
+//
+#import "UIColor+BTTools.h"
+
+#import "TFScrollNavigationBar.h"
+
+@interface TFScrollNavigationBar ()
+
+
+/** 标题scrollView (重写属性的目的 : 外界只读 , 内部可读可写) */
+@property (nonatomic , weak , readwrite) UIScrollView * titleScrollView;
+
+/** 右侧辅助按钮数组 (重写属性的目的 : 外界只读 , 内部可读可写) */
+@property (nonatomic , strong , readwrite) NSArray * accessoryButtons;
+
+/** 标题按钮数组 */
+@property (nonatomic , strong) NSMutableArray * titleButtons;
+
+@end
+
+@implementation TFScrollNavigationBar
+
+
+
+
+#pragma mark - 初始化方法
+
+/** 根据传进来的控制器数组进行初始化 , 实际目的只是为了获取控制器的标题 */
+- (instancetype)initWithControllers : (NSArray *) controllers
+{
+    self = [super init];
+    if (self)
+    {
+        /** 添加子控制器的标题 */
+        [self addTitlesFromChildViewControllers: controllers];
+        
+        
+    }
+    
+    return self;
+}
+
+
+#pragma mark - 参数懒加载
+
+/** 标题scrollView */
+- (UIScrollView *)titleScrollView
+{
+    if(_titleScrollView == nil)
+    {
+        UIScrollView * temp = [[UIScrollView alloc] init];
+        
+        [self addSubview:temp];
+        _titleScrollView = temp ;
+    }
+    
+    return _titleScrollView;
+}
+
+
+- (NSMutableArray *)titleButtons
+{
+    if(_titleButtons == nil)
+    {
+        NSMutableArray * temp = [NSMutableArray array];
+        
+        _titleButtons = temp ;
+    }
+    
+    return _titleButtons;
+}
+
+
+#pragma mark - 按钮点击事件
+
+/** 设置按钮点击事件 */
+- (void)clickButton : (UIButton *)button
+{
+    NSLog(@"[%s--第%d行]--[点击了按钮]",__func__,__LINE__);
+}
+
+
+
+
+
+#pragma mark - 内部方法
+
+/** 添加子控制器的标题 */
+- (void)addTitlesFromChildViewControllers : (NSArray *)controllers
+{
+    
+    for (UIViewController * obj in controllers) {
+        if (obj.title.length < 1)
+        {
+            NSLog(@"[%s--第%d行]--[错误:没有设置控制器的标题!]",__func__,__LINE__);
+            return;
+        }
+        
+        /** 根据标题添加按钮 */
+        [self addButtonWithTitle:obj.title];
+        
+    }
+
+}
+
+
+/** 添加标题scrollView内的按钮 */
+- (void)addButtonWithTitle : (NSString *)title
+{
+    UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    /** 设置按钮标题 */
+    [button setTitle:title forState:UIControlStateNormal];
+    
+    /** 设置按钮点击事件 */
+    [button addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
+    
+    /** 将按钮添加到scrollView里面 */
+    [self.titleScrollView addSubview:button];
+    [self.titleButtons addObject:button];
+    
+}
+
+
+/** 添加右侧辅助按钮 (数组形式 , 建议最多添加2个 ) */
+- (void)addAccessoryButtons:(NSArray *) accessoryButtons
+{
+ 
+    if (accessoryButtons.count<1)
+    {
+        NSLog(@"[%s--第%d行]--[警告:按钮数组为空,请确认是否传入空数组!]",__func__,__LINE__);
+        self.accessoryButtons = nil;
+        return;
+    }
+    
+    self.accessoryButtons = nil;
+    NSMutableArray * array = [NSMutableArray array];
+    
+    for (UIButton * obj in accessoryButtons) {
+        
+        if (![obj isKindOfClass:[UIButton class]])
+        {
+            NSLog(@"[%s--第%d行]--[错误:请添加UIButton类型的按钮!如果需要自定义,可修改此处的代码!]",__func__,__LINE__);
+            return;
+        }
+        
+        [array addObject:obj];
+        [self addSubview:obj];
+        
+    }
+    
+    self.accessoryButtons = array;
+    
+}
+
+
+#pragma mark - 内部 Frame 计算方法
+
+/** 系统自动调用布局方法 */
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+
+    /** 布局辅助按钮 */
+    [self layoutAccessoryButtons];
+    
+    /** 布局标题scrollView */
+    [self layoutTitleScrollView];
+    
+}
+
+
+/** 布局辅助按钮 */
+- (void)layoutAccessoryButtons
+{
+    if (self.accessoryButtons.count < 1)
+        return;
+    
+    CGFloat height = self.bounds.size.height;
+    CGFloat width = height;
+    CGFloat x = self.bounds.size.width - width;
+    CGFloat y = 0;
+    
+    for (UIButton * obj in self.accessoryButtons) {
+        
+        obj.frame = CGRectMake(x, y, width, height);
+        
+        x = x - width;
+    }
+    
+
+}
+
+/** 布局标题scrollView */
+- (void)layoutTitleScrollView
+{
+    CGFloat x = 0;
+    CGFloat y = 0;
+    CGFloat height = self.bounds.size.height;
+    
+    /** 标题scrollView的宽度 根据辅助按钮的位置进行判断 */
+    CGFloat width = 0;
+    
+    if (self.accessoryButtons.count > 0)
+    {
+        UIButton * button = [self.accessoryButtons lastObject];
+        
+        width = CGRectGetMinX(button.frame);
+    }
+    else
+    {
+        width = self.bounds.size.width;
+    }
+    
+    self.titleScrollView.frame = CGRectMake(x, y, width, height);
+    
+    
+    /** 设置标题ScrollView的内容Size */
+    CGFloat sizeHeight = height;
+    CGFloat sizeWidth = [self layoutTitleButtons];
+    
+    self.titleScrollView.contentSize = CGSizeMake(sizeWidth, sizeHeight);
+
+}
+
+/** 布局标题ScrollView内部的按钮 , 并返回最后一个按钮的最大X值*/
+- (CGFloat)layoutTitleButtons
+{
+    for( NSInteger i = 0 ; i < self.titleButtons.count ; i++)
+    {
+        
+        UIButton * tempButton = self.titleButtons[i];
+        
+        /** 计算第一个按钮的frame */
+        if (i == 0)
+        {
+            CGFloat x = 0;
+            CGFloat y = 0;
+            CGSize size = [self sizeWithButton:tempButton];
+            
+            tempButton.frame = CGRectMake(x, y, size.width, size.height);
+            continue;
+        }
+        
+        /** 根据前一个按钮计算后面按钮的位置 */
+        UIButton * lastButton = self.titleButtons[i-1];
+        
+        CGFloat x = CGRectGetMaxX(lastButton.frame);
+        CGFloat y = lastButton.frame.origin.y;
+        CGSize size = [self sizeWithButton:tempButton];
+        
+        tempButton.frame = CGRectMake(x, y, size.width, size.height);
+        
+        
+    }
+    
+    /** 获取最后一个按钮 */
+    UIButton * button = [self.titleButtons lastObject];
+    
+    return CGRectGetMaxX(button.frame);
+}
+
+/** 根据按钮标题字体属性计算每个button的大小 */
+- (CGSize)sizeWithButton : (UIButton *)button
+{
+    NSMutableDictionary * attributes = [NSMutableDictionary dictionary];
+    
+    /** 设置按钮标题的字体属性 */
+    if (self.titleAttributes)
+    {
+        attributes = self.titleAttributes;
+        UIColor * color = attributes[NSForegroundColorAttributeName];
+        UIFont * font = attributes[NSFontAttributeName];
+        [button setTitleColor: color forState:UIControlStateNormal];
+        [button.titleLabel setFont:font];
+    }
+    else
+    {
+        attributes[NSFontAttributeName] = button.titleLabel.font;
+        attributes[NSForegroundColorAttributeName] = button.titleLabel.textColor;
+        /** 下面是测试字体 */
+        //attributes[NSFontAttributeName] = [UIFont systemFontOfSize:30];
+        //UIFont * font = attributes[NSFontAttributeName];
+        //[button.titleLabel setFont:font];
+        
+    }
+    
+    /** 计算按钮标题的size */
+    CGRect rect = [button.titleLabel.text boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, self.titleScrollView.bounds.size.height ) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];
+    
+    CGSize size = CGSizeMake(rect.size.width + 4, self.titleScrollView.bounds.size.height);
+    /** 设置按钮内部label的大小 */
+    button.titleLabel.frame = CGRectMake(0, 0, size.width, size.height);
+    /** 设置文字居中 */
+    button.titleLabel.textAlignment = NSTextAlignmentCenter;
+    
+#warning 测试背景色
+    
+    button.titleLabel.backgroundColor = BTRandomColor;
+    button.backgroundColor = BTRandomColor;
+    
+    return size;
+}
+
+
+
+@end

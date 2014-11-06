@@ -7,11 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TFScrollNavigationBar.h"
 
 @interface TFScrollNavigationRootViewController : UIViewController
 
 /** 内容scrollView */
-@property (nonatomic , weak) UIScrollView * contentScrollView;
+@property (nonatomic , weak , readonly) UIScrollView * contentScrollView;
+
+/** 自定义导航栏 */
+@property (nonatomic , weak , readonly) TFScrollNavigationBar * myNavigationBar;
+
 
 /** 根据传进来的控制器数组进行初始化 */
 - (instancetype)initWithControllers : (NSArray *) controllers;
