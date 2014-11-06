@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		0429DB9F1A0B5FD300C7851C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429DB9E1A0B5FD300C7851C /* main.m */; };
 		0429DBA21A0B5FD300C7851C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429DBA11A0B5FD300C7851C /* AppDelegate.m */; };
-		0429DBA51A0B5FD300C7851C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429DBA41A0B5FD300C7851C /* ViewController.m */; };
 		0429DBA81A0B5FD300C7851C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0429DBA61A0B5FD300C7851C /* Main.storyboard */; };
 		0429DBAA1A0B5FD300C7851C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0429DBA91A0B5FD300C7851C /* Images.xcassets */; };
 		0429DBAD1A0B5FD300C7851C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0429DBAB1A0B5FD300C7851C /* LaunchScreen.xib */; };
 		0429DBB91A0B5FD300C7851C /* _0141106_02ScrollNavigation__Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429DBB81A0B5FD300C7851C /* _0141106_02ScrollNavigation__Tests.m */; };
+		0429DBC81A0B62E000C7851C /* TFScrollNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429DBC71A0B62E000C7851C /* TFScrollNavigationController.m */; };
+		0429DBCB1A0B658F00C7851C /* TFScrollNavigationRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429DBCA1A0B658F00C7851C /* TFScrollNavigationRootViewController.m */; };
+		0429DBCF1A0B691700C7851C /* BTTestAController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429DBCE1A0B691700C7851C /* BTTestAController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +34,18 @@
 		0429DB9E1A0B5FD300C7851C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0429DBA01A0B5FD300C7851C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0429DBA11A0B5FD300C7851C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		0429DBA31A0B5FD300C7851C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		0429DBA41A0B5FD300C7851C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		0429DBA71A0B5FD300C7851C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0429DBA91A0B5FD300C7851C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0429DBAC1A0B5FD300C7851C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		0429DBB21A0B5FD300C7851C /* 20141106-02ScrollNavigation框架Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "20141106-02ScrollNavigation框架Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0429DBB71A0B5FD300C7851C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0429DBB81A0B5FD300C7851C /* _0141106_02ScrollNavigation__Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _0141106_02ScrollNavigation__Tests.m; sourceTree = "<group>"; };
+		0429DBC61A0B62E000C7851C /* TFScrollNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFScrollNavigationController.h; sourceTree = "<group>"; };
+		0429DBC71A0B62E000C7851C /* TFScrollNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFScrollNavigationController.m; sourceTree = "<group>"; };
+		0429DBC91A0B658F00C7851C /* TFScrollNavigationRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFScrollNavigationRootViewController.h; sourceTree = "<group>"; };
+		0429DBCA1A0B658F00C7851C /* TFScrollNavigationRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFScrollNavigationRootViewController.m; sourceTree = "<group>"; };
+		0429DBCD1A0B691700C7851C /* BTTestAController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTTestAController.h; sourceTree = "<group>"; };
+		0429DBCE1A0B691700C7851C /* BTTestAController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTTestAController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,11 +87,10 @@
 		0429DB9B1A0B5FD300C7851C /* 20141106-02ScrollNavigation框架 */ = {
 			isa = PBXGroup;
 			children = (
+				0429DBCC1A0B68EB00C7851C /* testView */,
+				0429DBC51A0B62E000C7851C /* TFScrollNavigationController */,
 				0429DBA01A0B5FD300C7851C /* AppDelegate.h */,
 				0429DBA11A0B5FD300C7851C /* AppDelegate.m */,
-				0429DBA31A0B5FD300C7851C /* ViewController.h */,
-				0429DBA41A0B5FD300C7851C /* ViewController.m */,
-				0429DBA61A0B5FD300C7851C /* Main.storyboard */,
 				0429DBA91A0B5FD300C7851C /* Images.xcassets */,
 				0429DBAB1A0B5FD300C7851C /* LaunchScreen.xib */,
 				0429DB9C1A0B5FD300C7851C /* Supporting Files */,
@@ -96,6 +101,7 @@
 		0429DB9C1A0B5FD300C7851C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0429DBA61A0B5FD300C7851C /* Main.storyboard */,
 				0429DB9D1A0B5FD300C7851C /* Info.plist */,
 				0429DB9E1A0B5FD300C7851C /* main.m */,
 			);
@@ -117,6 +123,26 @@
 				0429DBB71A0B5FD300C7851C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0429DBC51A0B62E000C7851C /* TFScrollNavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				0429DBC61A0B62E000C7851C /* TFScrollNavigationController.h */,
+				0429DBC71A0B62E000C7851C /* TFScrollNavigationController.m */,
+				0429DBC91A0B658F00C7851C /* TFScrollNavigationRootViewController.h */,
+				0429DBCA1A0B658F00C7851C /* TFScrollNavigationRootViewController.m */,
+			);
+			path = TFScrollNavigationController;
+			sourceTree = "<group>";
+		};
+		0429DBCC1A0B68EB00C7851C /* testView */ = {
+			isa = PBXGroup;
+			children = (
+				0429DBCD1A0B691700C7851C /* BTTestAController.h */,
+				0429DBCE1A0B691700C7851C /* BTTestAController.m */,
+			);
+			name = testView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,9 +245,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0429DBA51A0B5FD300C7851C /* ViewController.m in Sources */,
 				0429DBA21A0B5FD300C7851C /* AppDelegate.m in Sources */,
+				0429DBCB1A0B658F00C7851C /* TFScrollNavigationRootViewController.m in Sources */,
 				0429DB9F1A0B5FD300C7851C /* main.m in Sources */,
+				0429DBCF1A0B691700C7851C /* BTTestAController.m in Sources */,
+				0429DBC81A0B62E000C7851C /* TFScrollNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +374,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "20141106-02ScrollNavigation框架/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -356,6 +385,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "20141106-02ScrollNavigation框架/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -414,6 +444,7 @@
 				0429DBBE1A0B5FD300C7851C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0429DBBF1A0B5FD300C7851C /* Build configuration list for PBXNativeTarget "20141106-02ScrollNavigation框架Tests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +453,7 @@
 				0429DBC11A0B5FD300C7851C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

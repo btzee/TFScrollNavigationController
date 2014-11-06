@@ -7,6 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "TFScrollNavigationController.h"
+
+#import "BTTestAController.h"
+
 
 @interface AppDelegate ()
 
@@ -16,7 +20,14 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    
+        NSArray * array = @[[[BTTestAController alloc] init],[[BTTestAController alloc] init],[[BTTestAController alloc] init]];
+    
+    self.window.rootViewController = [[TFScrollNavigationController alloc] initWithControllers:array];
+    
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
