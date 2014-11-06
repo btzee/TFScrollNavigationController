@@ -123,6 +123,10 @@
     _selectedButton.enabled = NO;
     _selectedButton.userInteractionEnabled = NO;
     
+    
+    /** 滚动选中的按钮到scrollView中心位置 */
+    [self scrollSelectedButtonToCenter];
+    
 }
 
 /** 重写setTitleNomalColor set方法 */
@@ -161,15 +165,11 @@
 {
     if (self.selectedButton == button)
         return;
-    
-    
+
     self.selectedButton.enabled = YES;
     self.selectedButton.userInteractionEnabled = YES;
-    //[self.selectedButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
     self.selectedButton = button;
-    
-    //[self.selectedButton setTitleColor:[UIColor colorWithCGColor:self.underLine.backgroundColor] forState:UIControlStateNormal];
     
     [self layoutUnderLine];
     
@@ -404,6 +404,40 @@
     return size;
 }
 
+
+/** 滚动选中的按钮到scrollView中心位置 */
+- (void)scrollSelectedButtonToCenter
+{
+
+   
+    CGFloat scrollViewCenterX = self.titleScrollView.center.x;
+    CGFloat selectedButtonCenterX = self.selectedButton.center.x;
+    
+    CGFloat scrollOffset = selectedButtonCenterX - scrollViewCenterX ;
+    
+    /** 如果滚动会超过起始位置 , 则偏移置0 */
+    if (scrollOffset < 0 )
+        scrollOffset = 0;
+    
+    /** 如果滚动会超过最末位置 , 则偏移置为最末 */
+    if (scrollOffset > (self.titleScrollView.contentSize.width - self.titleScrollView.bounds.size.width))
+        scrollOffset = self.titleScrollView.contentSize.width - self.titleScrollView.bounds.size.width;
+    
+    /** 以动画形式滚动 */
+    [UIView animateWithDuration:0.5 animations:^{
+   
+        self.titleScrollView.contentOffset = CGPointMake(scrollOffset, self.titleScrollView.contentOffset.y);
+        
+    } completion:^(BOOL finished) {
+        
+       // NSLog(@"偏移:%@--按钮中心:%@--导航栏中心%@",NSStringFromCGPoint(self.titleScrollView.contentOffset),NSStringFromCGPoint(self.selectedButton.center),NSStringFromCGPoint(self.titleScrollView.center));
+        
+    }];
+    
+    
+    
+    
+}
 
 
 @end
