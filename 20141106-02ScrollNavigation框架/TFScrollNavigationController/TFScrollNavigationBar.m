@@ -11,6 +11,7 @@
 
 
 #define Default_Selected_Color [UIColor colorWithRed:0/255.0 green:122/255.0 blue:255/255.0 alpha:1]
+#define Default_Nomal_Color [UIColor whiteColor]
 
 @interface TFScrollNavigationBar ()
 
@@ -22,7 +23,7 @@
 @property (nonatomic , strong , readwrite) NSArray * accessoryButtons;
 
 /** 标题按钮数组 */
-@property (nonatomic , strong) NSMutableArray * titleButtons;
+@property (nonatomic , strong , readwrite) NSMutableArray * titleButtons;
 
 /** 底部滑动下划线 */
 @property (nonatomic , weak) CALayer * underLine;
@@ -182,10 +183,10 @@
 /** 设置按钮点击事件 */
 - (void)clickButton : (UIButton *)button
 {
-//    if (self.selectedButton == button)
-//        return;
+    if (self.selectedButton == button)
+        return;
     
-    NSLog(@"%@",button);
+
 
     self.selectedButton.enabled = YES;
     self.selectedButton.userInteractionEnabled = YES;
@@ -229,6 +230,9 @@
     
     /** 设置按钮标题 */
     [button setTitle:title forState:UIControlStateNormal];
+    
+    /** 设置按钮默认正常状态颜色 */
+    [button setTitleColor:Default_Nomal_Color forState:UIControlStateNormal];
     
     /** 设置按钮默认选中颜色 */
     [button setTitleColor:Default_Selected_Color forState:UIControlStateDisabled];
@@ -393,6 +397,11 @@
 
 }
 
+/** 根据比例滚动下划线 */
+- (void)scrollUnderLineWithScale : (CGFloat)scale
+{    
+    self.underLine.frame = CGRectMake(self.titleScrollView.contentSize.width * scale, self.bounds.size.height - 2, self.underLine.frame.size.width, 2);
+}
 
 #pragma mark - 内部 自定义 计算方法
 
@@ -439,8 +448,6 @@
     
     CGFloat scrollOffset = selectedButtonCenterX - scrollViewCenterX ;
     
-    NSLog(@"%lf",scrollOffset);
-    
     /** 如果滚动会超过起始位置 , 则偏移置0 */
     if (scrollOffset < 0 )
         scrollOffset = 0;
@@ -456,8 +463,7 @@
         
     } completion:^(BOOL finished) {
         
-       // NSLog(@"偏移:%@--按钮中心:%@--导航栏中心%@",NSStringFromCGPoint(self.titleScrollView.contentOffset),NSStringFromCGPoint(self.selectedButton.center),NSStringFromCGPoint(self.titleScrollView.center));
-        
+       
     }];
     
     

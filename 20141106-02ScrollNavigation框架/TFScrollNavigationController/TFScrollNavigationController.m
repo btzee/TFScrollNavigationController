@@ -38,10 +38,14 @@
         self.myRootViewController = rootViewController;
         self.myNavigationBar = rootViewController.myNavigationBar;
         
+#warning 这是测试用的button
+        
         UIButton * button1 = [UIButton buttonWithType:UIButtonTypeContactAdd];
         UIButton * button2 = [UIButton buttonWithType:UIButtonTypeContactAdd];
-        
-        [self.myNavigationBar addAccessoryButtons:@[button1,button2]];
+        UIButton * button3 = [UIButton buttonWithType:UIButtonTypeContactAdd];
+        UIButton * button4 = [UIButton buttonWithType:UIButtonTypeContactAdd];
+
+        [self.myNavigationBar addAccessoryButtons:@[button1,button2,button3,button4]];
     
     }
     

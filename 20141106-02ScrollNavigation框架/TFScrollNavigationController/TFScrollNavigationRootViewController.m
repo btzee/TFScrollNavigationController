@@ -67,12 +67,10 @@ static NSString * const selectedViewControllerName_KeyPath = @"selectedButton.ti
     {
         NSString * title = change[@"new"];
         
-        NSLog(@"获取的按钮:%@",title);
-        
         UIViewController * selectedViewController = [self viewControllerWithTitle:title fromControllers:self.childViewControllers];
         
         /** 滚动界面到指定的控制器 */
-            [self scrollToViewController:selectedViewController];
+        [self scrollToViewController:selectedViewController];
     
     }
     
@@ -114,7 +112,7 @@ static NSString * const selectedViewControllerName_KeyPath = @"selectedButton.ti
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor redColor];
-    NSLog(@"[%s--第%d行]--[]",__func__,__LINE__);
+   
 }
 
 
@@ -183,6 +181,23 @@ static NSString * const selectedViewControllerName_KeyPath = @"selectedButton.ti
 
 }
 
+
+
+/** 根据比例滚动tabBar的下划线 */
+- (void)scrollMyTabBarUnderLine
+{
+    if (self.contentScrollView.contentSize.width > 0)
+    {
+        CGFloat scaleOffset = (CGFloat)(self.contentScrollView.contentOffset.x / self.contentScrollView.contentSize.width);
+        //NSLog(@"开始:%lf -- %lf",scaleOffset,self.contentScrollView.contentSize.width);
+        
+        if (self.contentScrollView.contentOffset.x <0)
+            scaleOffset = 0;
+        if (self.contentScrollView.contentOffset.x > self.contentScrollView.contentSize.width)
+            scaleOffset = 1;
+        [self.myNavigationBar scrollUnderLineWithScale:scaleOffset];
+    }
+}
 
 
 #pragma mark - 内部 初始化方法
@@ -264,7 +279,35 @@ static NSString * const selectedViewControllerName_KeyPath = @"selectedButton.ti
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    //if (scrollView.contentOffset.y)
+    
+    /** 根据比例滚动tabBar的下划线 */
+    [self scrollMyTabBarUnderLine];
+
+
+    
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
+{
+NSLog(@"[%s--第%d行]--[]",__func__,__LINE__);
+}
+
+
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+   
+    NSInteger intOffset = self.contentScrollView.contentOffset.x / self.contentScrollView.bounds.size.width + 0.5;
+    
+    UIViewController * selectedViewController = self.childViewControllers[intOffset];
+    
+    for (UIButton * obj in self.myNavigationBar.titleButtons) {
+        if ([obj.titleLabel.text isEqualToString:selectedViewController.title])
+        {
+            [self.myNavigationBar clickButton:obj];
+        }
+    }
+
 
 }
 

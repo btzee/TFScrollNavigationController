@@ -43,6 +43,8 @@
 /** 当前选中的按钮 */
 @property (nonatomic , weak , readonly) UIButton * selectedButton;
 
+/** 标题按钮数组 */
+@property (nonatomic , strong , readonly) NSMutableArray * titleButtons;
 
 
 
@@ -52,6 +54,11 @@
 /** 添加右侧辅助按钮 (数组形式 , 建议最多添加2个 ) */
 - (void)addAccessoryButtons:(NSArray *) accessoryButtons;
 
+/** 设置按钮点击事件 */
+- (void)clickButton : (UIButton *)button;
+
+/** 根据比例滚动下划线 */
+- (void)scrollUnderLineWithScale : (CGFloat)scale;
 
 
 @end

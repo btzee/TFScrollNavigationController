@@ -34,7 +34,11 @@
     [super viewWillAppear:animated];
     
     /** 显示系统自带导航栏 */
-    self.navigationController.navigationBar.hidden = NO ;
+    //self.navigationController.navigationBar.hidden = NO ;
+    
+    NSLog(@"%@",NSStringFromCGRect(self.navigationController.navigationBar.frame));
+    
+    NSLog(@"%@",NSStringFromUIEdgeInsets(self.tableView.contentInset));
     
 }
 
@@ -78,7 +82,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    UIViewController * vc = [[UIViewController alloc] init];
+    //UIViewController * vc = [[UIViewController alloc] init];
+    UITableViewController * vc = [[UITableViewController alloc] init];
     vc.view.backgroundColor = [UIColor yellowColor];
     
     NSLog(@"[%s--第%d行]--[%@]",__func__,__LINE__,self.navigationController);
