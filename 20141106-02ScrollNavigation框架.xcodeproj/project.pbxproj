@@ -17,6 +17,7 @@
 		0429DBCB1A0B658F00C7851C /* TFScrollNavigationRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429DBCA1A0B658F00C7851C /* TFScrollNavigationRootViewController.m */; };
 		0429DBCF1A0B691700C7851C /* BTTestAController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429DBCE1A0B691700C7851C /* BTTestAController.m */; };
 		0429DBD21A0B70C800C7851C /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429DBD11A0B70C800C7851C /* TestViewController.m */; };
+		0429DBD51A0B77F500C7851C /* BTTestBController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429DBD41A0B77F500C7851C /* BTTestBController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,8 @@
 		0429DBCE1A0B691700C7851C /* BTTestAController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTTestAController.m; sourceTree = "<group>"; };
 		0429DBD01A0B70C800C7851C /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		0429DBD11A0B70C800C7851C /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		0429DBD31A0B77F500C7851C /* BTTestBController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTTestBController.h; sourceTree = "<group>"; };
+		0429DBD41A0B77F500C7851C /* BTTestBController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTTestBController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +149,8 @@
 			children = (
 				0429DBCD1A0B691700C7851C /* BTTestAController.h */,
 				0429DBCE1A0B691700C7851C /* BTTestAController.m */,
+				0429DBD31A0B77F500C7851C /* BTTestBController.h */,
+				0429DBD41A0B77F500C7851C /* BTTestBController.m */,
 			);
 			name = testView;
 			sourceTree = "<group>";
@@ -253,6 +258,7 @@
 				0429DBD21A0B70C800C7851C /* TestViewController.m in Sources */,
 				0429DBA21A0B5FD300C7851C /* AppDelegate.m in Sources */,
 				0429DBCB1A0B658F00C7851C /* TFScrollNavigationRootViewController.m in Sources */,
+				0429DBD51A0B77F500C7851C /* BTTestBController.m in Sources */,
 				0429DB9F1A0B5FD300C7851C /* main.m in Sources */,
 				0429DBCF1A0B691700C7851C /* BTTestAController.m in Sources */,
 				0429DBC81A0B62E000C7851C /* TFScrollNavigationController.m in Sources */,

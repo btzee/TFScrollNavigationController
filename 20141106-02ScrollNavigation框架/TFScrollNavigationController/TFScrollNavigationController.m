@@ -49,10 +49,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.navigationBar.hidden = YES;
     
     NSLog(@"[%s--第%d行]--[]",__func__,__LINE__);
 }
+
+
+/** 系统即将显示的时候调用 */
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    /** 隐藏系统自带导航栏 */
+    self.navigationBar.hidden = YES ;
+    
+}
+
 
 /** 系统自动调用布局方法 */
 - (void)viewDidLayoutSubviews

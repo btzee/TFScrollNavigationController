@@ -73,6 +73,17 @@
 }
 
 
+/** 系统即将显示的时候调用 */
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    /** 隐藏系统自带导航栏 */
+    self.navigationController.navigationBar.hidden = YES ;
+    
+}
+
+
 /** 系统自动调用布局方法 */
 - (void)viewDidLayoutSubviews
 {
@@ -148,6 +159,7 @@
         
         if ([tempView isKindOfClass:[UIScrollView class]])
         {
+            /** 如果是scrollView或其子类 , 则重新计算下内容偏移 */
             ((UIScrollView *)tempView).contentInset = UIEdgeInsetsMake(CGRectGetMaxY(self.navigationController.navigationBar.frame), 0, 0, 0);
             ((UIScrollView *)tempView).contentOffset = CGPointMake(0, -CGRectGetMaxY(self.navigationController.navigationBar.frame));
         }

@@ -7,6 +7,9 @@
 //
 
 #import "BTTestAController.h"
+#import "TestViewController.h"
+#import "BTTestBController.h"
+
 
 @interface BTTestAController ()
 
@@ -24,6 +27,15 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBar.hidden = YES ;
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,8 +78,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    UIViewController * vc = [[UIViewController alloc] init];
-    vc.view.backgroundColor = [UIColor yellowColor];
+    BTTestBController * vc = [[BTTestBController alloc] init];
+    //vc.view.backgroundColor = [UIColor yellowColor];
     
     NSLog(@"[%s--第%d行]--[%@]",__func__,__LINE__,self.navigationController);
     
