@@ -21,13 +21,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    
-        NSArray * array = @[[[BTTestAController alloc] init],[[BTTestAController alloc] init],[[BTTestAController alloc] init]];
-    
-    self.window.rootViewController = [[TFScrollNavigationController alloc] initWithControllers:array];
-    
-    [self.window makeKeyAndVisible];
+//    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+//    
+//        NSArray * array = @[[[BTTestAController alloc] init],[[BTTestAController alloc] init],[[BTTestAController alloc] init]];
+//    
+//    self.window.rootViewController = [[TFScrollNavigationController alloc] initWithControllers:array];
+//    
+//    [self.window makeKeyAndVisible];
     return YES;
 }
 

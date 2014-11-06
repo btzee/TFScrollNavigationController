@@ -16,6 +16,7 @@
 		0429DBC81A0B62E000C7851C /* TFScrollNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429DBC71A0B62E000C7851C /* TFScrollNavigationController.m */; };
 		0429DBCB1A0B658F00C7851C /* TFScrollNavigationRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429DBCA1A0B658F00C7851C /* TFScrollNavigationRootViewController.m */; };
 		0429DBCF1A0B691700C7851C /* BTTestAController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429DBCE1A0B691700C7851C /* BTTestAController.m */; };
+		0429DBD21A0B70C800C7851C /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429DBD11A0B70C800C7851C /* TestViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,8 @@
 		0429DBCA1A0B658F00C7851C /* TFScrollNavigationRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFScrollNavigationRootViewController.m; sourceTree = "<group>"; };
 		0429DBCD1A0B691700C7851C /* BTTestAController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTTestAController.h; sourceTree = "<group>"; };
 		0429DBCE1A0B691700C7851C /* BTTestAController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTTestAController.m; sourceTree = "<group>"; };
+		0429DBD01A0B70C800C7851C /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		0429DBD11A0B70C800C7851C /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +96,8 @@
 				0429DBA11A0B5FD300C7851C /* AppDelegate.m */,
 				0429DBA91A0B5FD300C7851C /* Images.xcassets */,
 				0429DBAB1A0B5FD300C7851C /* LaunchScreen.xib */,
+				0429DBD01A0B70C800C7851C /* TestViewController.h */,
+				0429DBD11A0B70C800C7851C /* TestViewController.m */,
 				0429DB9C1A0B5FD300C7851C /* Supporting Files */,
 			);
 			path = "20141106-02ScrollNavigation框架";
@@ -245,6 +250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0429DBD21A0B70C800C7851C /* TestViewController.m in Sources */,
 				0429DBA21A0B5FD300C7851C /* AppDelegate.m in Sources */,
 				0429DBCB1A0B658F00C7851C /* TFScrollNavigationRootViewController.m in Sources */,
 				0429DB9F1A0B5FD300C7851C /* main.m in Sources */,

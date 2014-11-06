@@ -78,6 +78,9 @@
 {
     [super viewDidLayoutSubviews];
     
+    /** 布局自身的view */
+    [self layoutSelfView];
+
     /** 布局内容scrollView */
     [self layoutMyContentScrollView];
     
@@ -109,6 +112,14 @@
 }
 
 #pragma mark - 内部 计算Frame方法
+
+
+/** 布局自身的view */
+- (void)layoutSelfView
+{
+    self.view.frame = self.view.superview.bounds;
+}
+
 
 /** 布局内容scrollView */
 - (void)layoutMyContentScrollView

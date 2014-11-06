@@ -45,7 +45,7 @@
 }
 
 
-#pragma mark - 界面加载
+#pragma mark - 系统 : 界面加载
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -54,9 +54,25 @@
     NSLog(@"[%s--第%d行]--[]",__func__,__LINE__);
 }
 
+/** 系统自动调用布局方法 */
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    /** 布局自身的view */
+    [self layoutSelfView];
+    
+}
 
 
 
+#pragma mark - 内部 计算Frame方法
+
+/** 布局自身的view */
+- (void)layoutSelfView
+{
+    self.view.frame = self.view.superview.bounds;
+}
 
 
 #pragma mark - 其他
