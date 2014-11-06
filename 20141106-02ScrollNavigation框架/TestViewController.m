@@ -25,10 +25,10 @@
     BTTestAController * VC3 = [[BTTestAController alloc] init];
     BTTestAController * VC4 = [[BTTestAController alloc] init];
     
-    VC1.title = @"这是第一个按钮";
-    VC2.title = @"这是第二个按钮";
-    VC3.title = @"这是第三个按钮";
-    VC4.title = @"这是第四个按钮";
+    VC1.title = @"第一个";
+    VC2.title = @"第二个";
+    VC3.title = @"第三个";
+    VC4.title = @"第四个";
     
     NSArray * array = @[VC1,VC2,VC3,VC4];
 

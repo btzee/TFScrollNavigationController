@@ -28,7 +28,7 @@
 @property (nonatomic , weak) CALayer * underLine;
 
 /** 当前选中的按钮 */
-@property (nonatomic , weak) UIButton * selectedButton;
+@property (nonatomic , weak , readwrite) UIButton * selectedButton;
 
 @end
 
@@ -127,7 +127,26 @@
     /** 滚动选中的按钮到scrollView中心位置 */
     [self scrollSelectedButtonToCenter];
     
+/*=================================================================
+
+ 通哥提示: 
+    1. 在这里可以给控件写一个代理 , 然后将控件当前选中的按钮用代理的方式传出去.
+    2. 也可以用KVO方法监听选中的按钮.
+    3. 在本框架中我就用KVO来监听按钮的变化了,就不用代理了(可见RootViewController的初始化方法).
+    4. 如果要完美移植本控件, 建议可以给控件添加一个代理.
+ 如下:
+=================================================================*/
+
+    /** 选中一个按钮后告诉代理 */
+    if ([self.delegate respondsToSelector:@selector(scrollNavigationBar:DidSelectedButton:)])
+    {
+        [self.delegate scrollNavigationBar:self DidSelectedButton:self.selectedButton];
+    }
+    
 }
+
+
+
 
 /** 重写setTitleNomalColor set方法 */
 - (void)setTitleNomalColor:(UIColor *)titleNomalColor
@@ -163,8 +182,10 @@
 /** 设置按钮点击事件 */
 - (void)clickButton : (UIButton *)button
 {
-    if (self.selectedButton == button)
-        return;
+//    if (self.selectedButton == button)
+//        return;
+    
+    NSLog(@"%@",button);
 
     self.selectedButton.enabled = YES;
     self.selectedButton.userInteractionEnabled = YES;
@@ -408,19 +429,24 @@
 /** 滚动选中的按钮到scrollView中心位置 */
 - (void)scrollSelectedButtonToCenter
 {
-
+    /** 如果titleView的内容长度小于frame , 就不滚动 */
+    if (self.titleScrollView.contentSize.width <= self.titleScrollView.bounds.size.width)
+        return;
+    
    
     CGFloat scrollViewCenterX = self.titleScrollView.center.x;
     CGFloat selectedButtonCenterX = self.selectedButton.center.x;
     
     CGFloat scrollOffset = selectedButtonCenterX - scrollViewCenterX ;
     
+    NSLog(@"%lf",scrollOffset);
+    
     /** 如果滚动会超过起始位置 , 则偏移置0 */
     if (scrollOffset < 0 )
         scrollOffset = 0;
     
     /** 如果滚动会超过最末位置 , 则偏移置为最末 */
-    if (scrollOffset > (self.titleScrollView.contentSize.width - self.titleScrollView.bounds.size.width))
+    else if (scrollOffset > (self.titleScrollView.contentSize.width - self.titleScrollView.bounds.size.width))
         scrollOffset = self.titleScrollView.contentSize.width - self.titleScrollView.bounds.size.width;
     
     /** 以动画形式滚动 */

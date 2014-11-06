@@ -8,6 +8,10 @@
 
 #import "TFScrollNavigationRootViewController.h"
 
+
+static NSString * const selectedViewControllerName_KeyPath = @"selectedButton.titleLabel.text";
+
+
 @interface TFScrollNavigationRootViewController ()<UIScrollViewDelegate>
 
 /** 内容scrollView (重写属性的目的 : 外界只读 , 内部可读可写) */
@@ -15,6 +19,7 @@
 
 /** 自定义导航栏 (重写属性的目的 : 外界只读 , 内部可读可写) */
 @property (nonatomic , weak , readwrite) TFScrollNavigationBar * myNavigationBar;
+
 
 
 @end
@@ -37,6 +42,11 @@
         /** 添加自定义导航栏 */
         TFScrollNavigationBar * navigationBar = [[TFScrollNavigationBar alloc] initWithControllers:controllers];
         
+        
+        /** KVO 监听选中的按钮的变化 */
+        [navigationBar addObserver:self forKeyPath:selectedViewControllerName_KeyPath options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld)  context:nil];
+        
+        
         self.myNavigationBar = navigationBar;
         [self.view addSubview:navigationBar];
 
@@ -45,6 +55,29 @@
     
     return self;
 }
+
+
+#pragma mark - KVO 监听方法
+
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    /** 判断哪一个监听键值 */
+    if ([keyPath isEqualToString:selectedViewControllerName_KeyPath])
+    {
+        NSString * title = change[@"new"];
+        
+        NSLog(@"获取的按钮:%@",title);
+        
+        UIViewController * selectedViewController = [self viewControllerWithTitle:title fromControllers:self.childViewControllers];
+        
+        /** 滚动界面到指定的控制器 */
+            [self scrollToViewController:selectedViewController];
+    
+    }
+    
+}
+
 
 
 #pragma mark - 参数懒加载
@@ -114,6 +147,43 @@
 
 
 #pragma mark - 内部方法
+
+/** 在控制器数组中根据标题查找对应的控制器并返回 , 如果没有找到返回空 */
+- (UIViewController *)viewControllerWithTitle : (NSString *)title fromControllers : (NSArray *) controllers
+{
+    for (UIViewController * obj in controllers) {
+        
+        if([obj.title isEqualToString:title])
+            return obj;
+        
+    }
+    
+    
+    return nil;
+}
+
+
+/** 滚动界面到指定的控制器 */
+- (void)scrollToViewController : (UIViewController *) viewController
+{
+    
+    CGFloat scrollOffset = viewController.view.frame.origin.x;
+    
+    /** 以动画形式滚动 */
+    [UIView animateWithDuration:0.5 animations:^{
+        
+        self.contentScrollView.contentOffset = CGPointMake(scrollOffset, self.contentScrollView.contentOffset.y);
+        
+    } completion:^(BOOL finished) {
+
+        
+    }];
+
+    
+
+}
+
+
 
 #pragma mark - 内部 初始化方法
 
@@ -189,6 +259,14 @@
     
 }
 
+
+#pragma mark - scrollView 的代理 事件方法
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    //if (scrollView.contentOffset.y)
+
+}
 
 
 

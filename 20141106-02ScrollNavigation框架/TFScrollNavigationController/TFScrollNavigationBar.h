@@ -8,7 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
+@class TFScrollNavigationBar;
+
+@protocol TFScrollNavigationBar <NSObject>
+
+@optional
+
+/** 选中一个按钮后告诉代理 */
+- (void)scrollNavigationBar:(TFScrollNavigationBar *)scrollNavigationBar DidSelectedButton : (UIButton *)button;
+
+@end
+
+
 @interface TFScrollNavigationBar : UIView
+
+/** 代理 */
+@property (nonatomic , weak) id<TFScrollNavigationBar> delegate;
 
 /** 标题scrollView */
 @property (nonatomic , weak , readonly) UIScrollView * titleScrollView;
@@ -24,6 +39,11 @@
 
 /** 标题显示文字常规颜色 */
 @property (nonatomic , strong) UIColor * titleNomalColor;
+
+/** 当前选中的按钮 */
+@property (nonatomic , weak , readonly) UIButton * selectedButton;
+
+
 
 
 /** 根据传进来的控制器数组进行初始化 */
