@@ -16,8 +16,14 @@
 /** 右侧辅助按钮数组 */
 @property (nonatomic , strong , readonly) NSArray * accessoryButtons;
 
-/** 标题显示字体attributes (根据字体计算标题长度 , 该参数为nil时默认跟随系统)*/
-@property (nonatomic , strong) NSMutableDictionary * titleAttributes;
+/** 标题显示字体的大小 (根据字体计算标题长度 , 该参数为nil时默认跟随系统)*/
+@property (nonatomic , strong) UIFont * titleFont;
+
+/** 标题显示文字及下划线的颜色 */
+@property (nonatomic , strong) UIColor * titleSelectedColor;
+
+/** 标题显示文字常规颜色 */
+@property (nonatomic , strong) UIColor * titleNomalColor;
 
 
 /** 根据传进来的控制器数组进行初始化 */

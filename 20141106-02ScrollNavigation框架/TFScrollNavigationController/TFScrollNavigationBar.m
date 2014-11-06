@@ -9,6 +9,9 @@
 
 #import "TFScrollNavigationBar.h"
 
+
+#define Default_Selected_Color [UIColor colorWithRed:0/255.0 green:122/255.0 blue:255/255.0 alpha:1]
+
 @interface TFScrollNavigationBar ()
 
 
@@ -20,6 +23,12 @@
 
 /** 标题按钮数组 */
 @property (nonatomic , strong) NSMutableArray * titleButtons;
+
+/** 底部滑动下划线 */
+@property (nonatomic , weak) CALayer * underLine;
+
+/** 当前选中的按钮 */
+@property (nonatomic , weak) UIButton * selectedButton;
 
 @end
 
@@ -39,9 +48,12 @@
         /** 添加子控制器的标题 */
         [self addTitlesFromChildViewControllers: controllers];
         
+        /** 默认初始选中按钮为第一个 */
+        if (self.titleButtons.count > 0)
+            self.selectedButton = [self.titleButtons firstObject];
         
     }
-    
+
     return self;
 }
 
@@ -55,6 +67,11 @@
     {
         UIScrollView * temp = [[UIScrollView alloc] init];
         
+        /** 隐藏contentScrollView的垂直与水平的滚动条 */
+        temp.showsVerticalScrollIndicator = NO;
+        temp.showsHorizontalScrollIndicator = NO;
+
+        
         [self addSubview:temp];
         _titleScrollView = temp ;
     }
@@ -62,7 +79,7 @@
     return _titleScrollView;
 }
 
-
+/** 标题按钮数组 */
 - (NSMutableArray *)titleButtons
 {
     if(_titleButtons == nil)
@@ -76,12 +93,87 @@
 }
 
 
+/** 底部滑动下划线 */
+- (CALayer *)underLine
+{
+    if(_underLine == nil)
+    {
+        CALayer * temp = [[CALayer alloc] init];
+        
+        /** 设置线段端点样式 */
+        temp.cornerRadius = 3.0;
+        
+        temp.backgroundColor = Default_Selected_Color.CGColor;
+        
+        [self.titleScrollView.layer addSublayer:temp];
+        _underLine = temp ;
+    }
+    
+    return _underLine;
+}
+
+
+#pragma mark - 参数重写set,get方法
+
+/** 重写setSelectedButton set方法 */
+- (void)setSelectedButton:(UIButton *)selectedButton
+{
+    _selectedButton = selectedButton;
+    
+    _selectedButton.enabled = NO;
+    _selectedButton.userInteractionEnabled = NO;
+    
+}
+
+/** 重写setTitleNomalColor set方法 */
+- (void)setTitleNomalColor:(UIColor *)titleNomalColor
+{
+    _titleNomalColor = titleNomalColor;
+    
+    for (UIButton * obj in self.titleButtons) {
+        
+        [obj setTitleColor:titleNomalColor forState:UIControlStateNormal];
+    }
+
+}
+
+/** 重写setTitleSelectedColor set方法 */
+- (void)setTitleSelectedColor:(UIColor *)titleSelectedColor
+{
+    _titleSelectedColor = titleSelectedColor;
+    
+    for (UIButton * obj in self.titleButtons) {
+        
+        [obj setTitleColor:titleSelectedColor forState:UIControlStateDisabled];
+        [obj setTitleColor:titleSelectedColor forState:UIControlStateSelected];
+    }
+    
+    self.underLine.backgroundColor = titleSelectedColor.CGColor;
+    
+}
+
+
+
 #pragma mark - 按钮点击事件
 
 /** 设置按钮点击事件 */
 - (void)clickButton : (UIButton *)button
 {
-    NSLog(@"[%s--第%d行]--[点击了按钮]",__func__,__LINE__);
+    if (self.selectedButton == button)
+        return;
+    
+    
+    self.selectedButton.enabled = YES;
+    self.selectedButton.userInteractionEnabled = YES;
+    //[self.selectedButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
+    self.selectedButton = button;
+    
+    //[self.selectedButton setTitleColor:[UIColor colorWithCGColor:self.underLine.backgroundColor] forState:UIControlStateNormal];
+    
+    [self layoutUnderLine];
+    
+    
 }
 
 
@@ -116,6 +208,11 @@
     
     /** 设置按钮标题 */
     [button setTitle:title forState:UIControlStateNormal];
+    
+    /** 设置按钮默认选中颜色 */
+    [button setTitleColor:Default_Selected_Color forState:UIControlStateDisabled];
+    [button setTitleColor:Default_Selected_Color forState:UIControlStateSelected];
+
     
     /** 设置按钮点击事件 */
     [button addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -172,6 +269,8 @@
     /** 布局标题scrollView */
     [self layoutTitleScrollView];
     
+    /** 布局下划线layer */
+    [self layoutUnderLine];
 }
 
 
@@ -265,31 +364,33 @@
     return CGRectGetMaxX(button.frame);
 }
 
+/** 布局下划线layer */
+- (void)layoutUnderLine
+{
+
+    self.underLine.frame = CGRectMake(self.selectedButton.frame.origin.x, self.bounds.size.height - 2, self.selectedButton.frame.size.width, 2);
+
+}
+
+
+#pragma mark - 内部 自定义 计算方法
+
 /** 根据按钮标题字体属性计算每个button的大小 */
 - (CGSize)sizeWithButton : (UIButton *)button
 {
     NSMutableDictionary * attributes = [NSMutableDictionary dictionary];
     
+    UIFont * font = button.titleLabel.font;
+    
     /** 设置按钮标题的字体属性 */
-    if (self.titleAttributes)
+    if (self.titleFont)
     {
-        attributes = self.titleAttributes;
-        UIColor * color = attributes[NSForegroundColorAttributeName];
-        UIFont * font = attributes[NSFontAttributeName];
-        [button setTitleColor: color forState:UIControlStateNormal];
+        font = self.titleFont;
         [button.titleLabel setFont:font];
     }
-    else
-    {
-        attributes[NSFontAttributeName] = button.titleLabel.font;
-        attributes[NSForegroundColorAttributeName] = button.titleLabel.textColor;
-        /** 下面是测试字体 */
-        //attributes[NSFontAttributeName] = [UIFont systemFontOfSize:30];
-        //UIFont * font = attributes[NSFontAttributeName];
-        //[button.titleLabel setFont:font];
-        
-    }
-    
+
+    attributes[NSFontAttributeName] = button.titleLabel.font;
+
     /** 计算按钮标题的size */
     CGRect rect = [button.titleLabel.text boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, self.titleScrollView.bounds.size.height ) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];
     
@@ -299,10 +400,6 @@
     /** 设置文字居中 */
     button.titleLabel.textAlignment = NSTextAlignmentCenter;
     
-#warning 测试背景色
-    
-    button.titleLabel.backgroundColor = BTRandomColor;
-    button.backgroundColor = BTRandomColor;
     
     return size;
 }
