@@ -58,7 +58,7 @@
     [self addChildViewController:sc];
     
 #warning 在这里测试切换要添加到的view : self.view/self.testView
-    [self.view addSubview:sc.view];
+    [self.testView addSubview:sc.view];
     
 }
 

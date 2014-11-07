@@ -5,7 +5,6 @@
 //  Created by btz-mac on 14-11-6.
 //  Copyright (c) 2014年 朱佰通. All rights reserved.
 //
-#import "UIColor+BTTools.h"
 
 #import "TFScrollNavigationBar.h"
 
@@ -196,8 +195,9 @@
 {
     [super setBackgroundColor:backgroundColor];
     
-    /** 设置顶部状态栏的背景颜色跟导航栏一样 */
-    [[UIApplication sharedApplication] setValue:backgroundColor forKeyPath:@"statusBar.backgroundColor"];
+    
+    /** 如果这个自定义导航栏在屏幕最顶部时 , 则给系统的状态栏也染同色 */
+    [self colourStatusBarInSelfColorWhenSelfAtTop];
     
 }
 
@@ -273,6 +273,25 @@
 }
 
 
+/** 如果这个自定义导航栏在屏幕最顶部时 , 则给系统的状态栏也染同色 */
+- (void)colourStatusBarInSelfColorWhenSelfAtTop
+{
+    /** 如果本控件的frame不为空值 */
+    if(![[NSValue valueWithCGRect:self.frame] isEqualToValue:[NSValue valueWithCGRect:CGRectZero]])
+    {
+        CGRect rect = [self convertRect:self.bounds toView:[UIApplication sharedApplication].keyWindow];
+
+        /** 判断本控件是否正好在状态栏下面 */
+        if (rect.origin.y <= 20.0)
+        {
+            /** 设置顶部状态栏的背景颜色跟导航栏一样 */
+            [[UIApplication sharedApplication] setValue:self.backgroundColor forKeyPath:@"statusBar.backgroundColor"];
+
+        }
+
+    }
+
+}
 
 
 
@@ -282,6 +301,9 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+   
+    /** 如果这个自定义导航栏在屏幕最顶部时 , 则给系统的状态栏也染同色 */
+    [self colourStatusBarInSelfColorWhenSelfAtTop];
 
     /** 布局辅助按钮 */
     [self layoutAccessoryButtons];

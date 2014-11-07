@@ -17,6 +17,11 @@
 
 @implementation BTTestAController
 
+- (void)dealloc
+{
+    NSLog(@"[%s--第%d行]--[%@ , 我被销毁了.]",__func__,__LINE__,self);
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
