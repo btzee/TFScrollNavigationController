@@ -45,7 +45,7 @@
         UIButton * button3 = [UIButton buttonWithType:UIButtonTypeContactAdd];
         UIButton * button4 = [UIButton buttonWithType:UIButtonTypeContactAdd];
 
-        [self.myNavigationBar addAccessoryButtons:@[button1,button2,button3,button4]];
+        [self.myNavigationBar addAccessoryButtons:@[button1,button2 /*,button3,button4*/]];
     
     }
     

@@ -24,20 +24,28 @@
     BTTestAController * VC2 = [[BTTestAController alloc] init];
     BTTestAController * VC3 = [[BTTestAController alloc] init];
     BTTestAController * VC4 = [[BTTestAController alloc] init];
+    BTTestAController * VC5 = [[BTTestAController alloc] init];
+    BTTestAController * VC6 = [[BTTestAController alloc] init];
+    BTTestAController * VC7 = [[BTTestAController alloc] init];
+    BTTestAController * VC8 = [[BTTestAController alloc] init];
     
-    VC1.title = @"第一个";
-    VC2.title = @"第二个";
+    VC1.title = @"一";
+    VC2.title = @"第二";
     VC3.title = @"第三个";
-    VC4.title = @"第四个";
+    VC4.title = @"第四个啊";
+    VC5.title = @"第五个啊哦";
+    VC6.title = @"第六个啊哦吖";
+    VC7.title = @"第七个";
+    VC8.title = @"第八个";
     
-    NSArray * array = @[VC1,VC2,VC3,VC4];
+    NSArray * array = @[VC1,VC2,VC3,VC4,VC5,VC6,VC7,VC8];
 
     TFScrollNavigationController * sc = [[TFScrollNavigationController alloc] initWithControllers:array];
     
     [self addChildViewController:sc];
     
 #warning 在这里测试切换要添加到的view : self.view/self.testView
-    [self.view addSubview:sc.view];
+    [self.testView addSubview:sc.view];
     
 }
 

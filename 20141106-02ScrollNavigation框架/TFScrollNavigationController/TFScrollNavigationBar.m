@@ -260,6 +260,11 @@
         return;
     }
     
+    if (accessoryButtons.count > 3)
+    {
+        NSLog(@"[%s--第%d行]--[警告:您传入的辅助按钮数量超过3个,建议最多只添加2个!]",__func__,__LINE__);
+    }
+    
     self.accessoryButtons = nil;
     NSMutableArray * array = [NSMutableArray array];
     
@@ -401,6 +406,8 @@
 - (void)scrollUnderLineWithScale : (CGFloat)scale
 {    
     self.underLine.frame = CGRectMake(self.titleScrollView.contentSize.width * scale, self.bounds.size.height - 2, self.underLine.frame.size.width, 2);
+    
+    //[self selectedButtonWhenUnderLineScroll];
 }
 
 #pragma mark - 内部 自定义 计算方法
@@ -470,6 +477,23 @@
     
     
 }
+
+/** 滚动下划线的时候根据滚动位置自动选中对应的button */
+- (void)selectedButtonWhenUnderLineScroll
+{
+    for (UIButton * obj in self.titleButtons) {
+        
+        //if (fabs(self.underLine.frame.origin.x - obj.frame.origin.x) <= obj.frame.size.width * 0.2)
+        if (self.underLine.frame.origin.x == obj.frame.origin.x)
+        {
+            [self clickButton:obj];
+        }
+    }
+    
+   
+    
+}
+
 
 
 @end
