@@ -402,12 +402,44 @@
 
 }
 
-/** 根据比例滚动下划线 */
-- (void)scrollUnderLineWithScale : (CGFloat)scale
-{    
-    self.underLine.frame = CGRectMake(self.titleScrollView.contentSize.width * scale, self.bounds.size.height - 2, self.underLine.frame.size.width, 2);
-    
-    //[self selectedButtonWhenUnderLineScroll];
+
+/** 根据数组item的位置滚动下划线 (非特殊情况,不建议调用该方法) */
+- (void)scrollUnderLineFromLastIndex : (NSInteger)lastIndex ToNextIndex : (NSInteger)nextIndex
+{
+    /** 参数边界值判断 */
+    if (lastIndex >= self.titleButtons.count || nextIndex >= self.titleButtons.count || lastIndex < 0 || nextIndex < 0)
+    {
+        NSLog(@"[%s--第%d行]--[错误:输入的index有误!]",__func__,__LINE__);
+        return;
+    }
+
+    /** 滚动到同个控制器 */
+    if (lastIndex == nextIndex)
+    {
+        UIButton * nextButton = self.titleButtons[nextIndex];
+        
+        self.underLine.frame = CGRectMake(nextButton.frame.origin.x , self.bounds.size.height - 2, nextButton.bounds.size.width, 2);
+    }
+    /** 滚动到两个item的中点 */
+    else if ((nextIndex - lastIndex) == 1)
+    {
+        UIButton * lastButton = self.titleButtons[lastIndex];
+        UIButton * nextButton = self.titleButtons[nextIndex];
+        
+        CGFloat x = lastButton.center.x;
+        CGFloat width = nextButton.center.x - lastButton.center.x;
+        
+        self.underLine.frame = CGRectMake(x, self.bounds.size.height - 2, width, 2);
+
+    }
+    /** 滚动到下个控制器 */
+    else
+    {
+        UIButton * nextButton = self.titleButtons[nextIndex];
+        self.underLine.frame = CGRectMake(nextButton.frame.origin.x , self.bounds.size.height - 2, nextButton.bounds.size.width, 2);
+
+    }
+
 }
 
 #pragma mark - 内部 自定义 计算方法

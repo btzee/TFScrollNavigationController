@@ -188,14 +188,22 @@ static NSString * const selectedViewControllerName_KeyPath = @"selectedButton.ti
 {
     if (self.contentScrollView.contentSize.width > 0)
     {
-        CGFloat scaleOffset = (CGFloat)(self.contentScrollView.contentOffset.x / self.contentScrollView.contentSize.width);
-        //NSLog(@"开始:%lf -- %lf",scaleOffset,self.contentScrollView.contentSize.width);
         
-        if (self.contentScrollView.contentOffset.x <0)
-            scaleOffset = 0;
-        if (self.contentScrollView.contentOffset.x > (self.contentScrollView.contentSize.width - self.contentScrollView.bounds.size.width))
-            scaleOffset = (CGFloat)((self.contentScrollView.contentSize.width - self.contentScrollView.bounds.size.width)/ self.contentScrollView.contentSize.width);
-        [self.myNavigationBar scrollUnderLineWithScale:scaleOffset];
+        NSInteger indexNow = self.contentScrollView.contentOffset.x / self.contentScrollView.bounds.size.width;
+        NSInteger indexNext = self.contentScrollView.contentOffset.x / self.contentScrollView.bounds.size.width + 0.5;
+        
+        NSLog(@"%ld -- %ld", indexNow,indexNext);
+        
+        [self.myNavigationBar scrollUnderLineFromLastIndex:indexNow ToNextIndex:indexNext];
+        
+//        CGFloat scaleOffset = (CGFloat)(self.contentScrollView.contentOffset.x / self.contentScrollView.contentSize.width);
+//        //NSLog(@"开始:%lf -- %lf",scaleOffset,self.contentScrollView.contentSize.width);
+//        
+//        if (self.contentScrollView.contentOffset.x <0)
+//            scaleOffset = 0;
+//        if (self.contentScrollView.contentOffset.x > (self.contentScrollView.contentSize.width - self.contentScrollView.bounds.size.width))
+//            scaleOffset = (CGFloat)((self.contentScrollView.contentSize.width - self.contentScrollView.bounds.size.width)/ self.contentScrollView.contentSize.width);
+//        [self.myNavigationBar scrollUnderLineWithScale:scaleOffset];
     }
 }
 
