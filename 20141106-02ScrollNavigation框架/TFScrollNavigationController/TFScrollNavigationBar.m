@@ -12,6 +12,9 @@
 #define Default_Selected_Color [UIColor colorWithRed:0/255.0 green:122/255.0 blue:255/255.0 alpha:1]
 #define Default_Nomal_Color [UIColor whiteColor]
 
+/** 按钮标题文字之间的间距 */
+#define Button_Inset 20.0
+
 @interface TFScrollNavigationBar ()
 
 
@@ -438,7 +441,7 @@
     /** 计算按钮标题的size */
     CGRect rect = [button.titleLabel.text boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, self.titleScrollView.bounds.size.height ) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];
     
-    CGSize size = CGSizeMake(rect.size.width + 4, self.titleScrollView.bounds.size.height);
+    CGSize size = CGSizeMake(rect.size.width + Button_Inset, self.titleScrollView.bounds.size.height);
     /** 设置按钮内部label的大小 */
     button.titleLabel.frame = CGRectMake(0, 0, size.width, size.height);
     /** 设置文字居中 */

@@ -29,7 +29,7 @@
     BTTestAController * VC7 = [[BTTestAController alloc] init];
     BTTestAController * VC8 = [[BTTestAController alloc] init];
     
-    VC1.title = @"一";
+    VC1.title = @"我";
     VC2.title = @"第二";
     VC3.title = @"第三个";
     VC4.title = @"第四个啊";
@@ -49,16 +49,17 @@
     UIButton * button3 = [UIButton buttonWithType:UIButtonTypeContactAdd];
     UIButton * button4 = [UIButton buttonWithType:UIButtonTypeContactAdd];
     
-    [sc addTabBarAccessoryButtons:@[button1,button2]];
+    [sc addTabBarAccessoryButtons:@[button1]];
+    
     [sc setContentBackgrondColor:[UIColor blueColor]];
     [sc setTabBarBackgrondColor:[UIColor yellowColor]];
-    [sc setTabBarTitleWithNomalColor:[UIColor blackColor] AndSelectedColor:[UIColor redColor] AndTitleFont:[UIFont systemFontOfSize:30]];
+    //[sc setTabBarTitleWithNomalColor:[UIColor blackColor] AndSelectedColor:[UIColor redColor] AndTitleFont:[UIFont systemFontOfSize:17]];
     
     
     [self addChildViewController:sc];
     
 #warning 在这里测试切换要添加到的view : self.view/self.testView
-    [self.testView addSubview:sc.view];
+    [self.view addSubview:sc.view];
     
 }
 
