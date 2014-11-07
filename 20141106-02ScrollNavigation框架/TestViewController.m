@@ -49,7 +49,7 @@
     UIButton * button3 = [UIButton buttonWithType:UIButtonTypeContactAdd];
     UIButton * button4 = [UIButton buttonWithType:UIButtonTypeContactAdd];
     
-    //[sc addTabBarAccessoryButtons:@[button1,button2,button3]];
+    [sc addTabBarAccessoryButtons:@[button1,button2]];
     [sc setContentBackgrondColor:[UIColor blueColor]];
     [sc setTabBarBackgrondColor:[UIColor yellowColor]];
     [sc setTabBarTitleWithNomalColor:[UIColor blackColor] AndSelectedColor:[UIColor redColor] AndTitleFont:[UIFont systemFontOfSize:30]];
