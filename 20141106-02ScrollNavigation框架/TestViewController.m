@@ -49,7 +49,7 @@
     UIButton * button3 = [UIButton buttonWithType:UIButtonTypeContactAdd];
     UIButton * button4 = [UIButton buttonWithType:UIButtonTypeContactAdd];
     
-    [sc addTabBarAccessoryButtons:@[button1,button2,button3]];
+    //[sc addTabBarAccessoryButtons:@[button1,button2,button3]];
     [sc setContentBackgrondColor:[UIColor blueColor]];
     [sc setTabBarBackgrondColor:[UIColor yellowColor]];
     [sc setTabBarTitleWithNomalColor:[UIColor blackColor] AndSelectedColor:[UIColor redColor] AndTitleFont:[UIFont systemFontOfSize:30]];
@@ -58,7 +58,7 @@
     [self addChildViewController:sc];
     
 #warning 在这里测试切换要添加到的view : self.view/self.testView
-    [self.testView addSubview:sc.view];
+    [self.view addSubview:sc.view];
     
 }
 

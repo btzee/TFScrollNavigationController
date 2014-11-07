@@ -189,6 +189,19 @@
 }
 
 
+#pragma mark - 重写系统方法
+
+/** 重写设置背景颜色的方法 , 目的是为了让顶部状态栏的颜色跟导航栏的颜色一样. */
+- (void)setBackgroundColor:(UIColor *)backgroundColor
+{
+    [super setBackgroundColor:backgroundColor];
+    
+    /** 设置顶部状态栏的背景颜色跟导航栏一样 */
+    [[UIApplication sharedApplication] setValue:backgroundColor forKeyPath:@"statusBar.backgroundColor"];
+    
+}
+
+
 #pragma mark - 按钮点击事件
 
 /** 设置按钮点击事件 */

@@ -182,7 +182,7 @@ static NSString * const selectedViewControllerName_KeyPath = @"selectedButton.ti
 }
 
 
-#warning 这里传比例滚动是错误的 , 因为如果标题长度不一样 滚动比例也不一样 , 需要修改
+#warning 这里的算法还需要改进 . 目前滚动到中点的处理方式 在实际滚动的时候会让用户误以为卡顿效果.
 /** 根据比例滚动tabBar的下划线 */
 - (void)scrollMyTabBarUnderLine
 {
@@ -192,18 +192,10 @@ static NSString * const selectedViewControllerName_KeyPath = @"selectedButton.ti
         NSInteger indexNow = self.contentScrollView.contentOffset.x / self.contentScrollView.bounds.size.width;
         NSInteger indexNext = self.contentScrollView.contentOffset.x / self.contentScrollView.bounds.size.width + 0.5;
         
-        NSLog(@"%ld -- %ld", indexNow,indexNext);
+        //NSLog(@"%ld -- %ld", indexNow,indexNext);
         
         [self.myNavigationBar scrollUnderLineFromLastIndex:indexNow ToNextIndex:indexNext];
         
-//        CGFloat scaleOffset = (CGFloat)(self.contentScrollView.contentOffset.x / self.contentScrollView.contentSize.width);
-//        //NSLog(@"开始:%lf -- %lf",scaleOffset,self.contentScrollView.contentSize.width);
-//        
-//        if (self.contentScrollView.contentOffset.x <0)
-//            scaleOffset = 0;
-//        if (self.contentScrollView.contentOffset.x > (self.contentScrollView.contentSize.width - self.contentScrollView.bounds.size.width))
-//            scaleOffset = (CGFloat)((self.contentScrollView.contentSize.width - self.contentScrollView.bounds.size.width)/ self.contentScrollView.contentSize.width);
-//        [self.myNavigationBar scrollUnderLineWithScale:scaleOffset];
     }
 }
 
