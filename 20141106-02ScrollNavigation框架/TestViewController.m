@@ -42,6 +42,19 @@
 
     TFScrollNavigationController * sc = [[TFScrollNavigationController alloc] initWithControllers:array];
     
+#warning 这是测试用的button
+    
+    UIButton * button1 = [UIButton buttonWithType:UIButtonTypeContactAdd];
+    UIButton * button2 = [UIButton buttonWithType:UIButtonTypeContactAdd];
+    UIButton * button3 = [UIButton buttonWithType:UIButtonTypeContactAdd];
+    UIButton * button4 = [UIButton buttonWithType:UIButtonTypeContactAdd];
+    
+    [sc addTabBarAccessoryButtons:@[button1,button2,button3]];
+    [sc setContentBackgrondColor:[UIColor blueColor]];
+    [sc setTabBarBackgrondColor:[UIColor yellowColor]];
+    [sc setTabBarTitleWithNomalColor:[UIColor blackColor] AndSelectedColor:[UIColor redColor] AndTitleFont:[UIFont systemFontOfSize:30]];
+    
+    
     [self addChildViewController:sc];
     
 #warning 在这里测试切换要添加到的view : self.view/self.testView

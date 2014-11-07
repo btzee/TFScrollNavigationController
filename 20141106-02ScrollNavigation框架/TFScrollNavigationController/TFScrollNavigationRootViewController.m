@@ -285,23 +285,18 @@ static NSString * const selectedViewControllerName_KeyPath = @"selectedButton.ti
 
 #pragma mark - scrollView 的代理 事件方法
 
+/** scrollView正在滚动的时候系统会调用该方法 */
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     
-    /** 根据比例滚动tabBar的下划线 */
+    /** 滚动tabBar的下划线 */
     [self scrollMyTabBarUnderLine];
 
 
     
 }
 
-- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
-{
-NSLog(@"[%s--第%d行]--[]",__func__,__LINE__);
-}
-
-
-
+/** scrollView滚动结束的时候系统自动调用该方法 */
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
    

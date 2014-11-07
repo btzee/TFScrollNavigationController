@@ -176,6 +176,17 @@
     
 }
 
+/** 重写setTitleFont set方法 */
+- (void)setTitleFont:(UIFont *)titleFont
+{
+    _titleFont = titleFont;
+    
+    for (UIButton * obj in self.titleButtons) {
+        
+        obj.titleLabel.font = titleFont;
+    }
+    
+}
 
 
 #pragma mark - 按钮点击事件
@@ -249,41 +260,7 @@
 }
 
 
-/** 添加右侧辅助按钮 (数组形式 , 建议最多添加2个 ) */
-- (void)addAccessoryButtons:(NSArray *) accessoryButtons
-{
- 
-    if (accessoryButtons.count<1)
-    {
-        NSLog(@"[%s--第%d行]--[警告:按钮数组为空,请确认是否传入空数组!]",__func__,__LINE__);
-        self.accessoryButtons = nil;
-        return;
-    }
-    
-    if (accessoryButtons.count > 3)
-    {
-        NSLog(@"[%s--第%d行]--[警告:您传入的辅助按钮数量超过3个,建议最多只添加2个!]",__func__,__LINE__);
-    }
-    
-    self.accessoryButtons = nil;
-    NSMutableArray * array = [NSMutableArray array];
-    
-    for (UIButton * obj in accessoryButtons) {
-        
-        if (![obj isKindOfClass:[UIButton class]])
-        {
-            NSLog(@"[%s--第%d行]--[错误:请添加UIButton类型的按钮!如果需要自定义,可修改此处的代码!]",__func__,__LINE__);
-            return;
-        }
-        
-        [array addObject:obj];
-        [self addSubview:obj];
-        
-    }
-    
-    self.accessoryButtons = array;
-    
-}
+
 
 
 #pragma mark - 内部 Frame 计算方法
@@ -403,44 +380,7 @@
 }
 
 
-/** 根据数组item的位置滚动下划线 (非特殊情况,不建议调用该方法) */
-- (void)scrollUnderLineFromLastIndex : (NSInteger)lastIndex ToNextIndex : (NSInteger)nextIndex
-{
-    /** 参数边界值判断 */
-    if (lastIndex >= self.titleButtons.count || nextIndex >= self.titleButtons.count || lastIndex < 0 || nextIndex < 0)
-    {
-        NSLog(@"[%s--第%d行]--[错误:输入的index有误!]",__func__,__LINE__);
-        return;
-    }
 
-    /** 滚动到同个控制器 */
-    if (lastIndex == nextIndex)
-    {
-        UIButton * nextButton = self.titleButtons[nextIndex];
-        
-        self.underLine.frame = CGRectMake(nextButton.frame.origin.x , self.bounds.size.height - 2, nextButton.bounds.size.width, 2);
-    }
-    /** 滚动到两个item的中点 */
-    else if ((nextIndex - lastIndex) == 1)
-    {
-        UIButton * lastButton = self.titleButtons[lastIndex];
-        UIButton * nextButton = self.titleButtons[nextIndex];
-        
-        CGFloat x = lastButton.center.x;
-        CGFloat width = nextButton.center.x - lastButton.center.x;
-        
-        self.underLine.frame = CGRectMake(x, self.bounds.size.height - 2, width, 2);
-
-    }
-    /** 滚动到下个控制器 */
-    else
-    {
-        UIButton * nextButton = self.titleButtons[nextIndex];
-        self.underLine.frame = CGRectMake(nextButton.frame.origin.x , self.bounds.size.height - 2, nextButton.bounds.size.width, 2);
-
-    }
-
-}
 
 #pragma mark - 内部 自定义 计算方法
 
@@ -526,6 +466,100 @@
     
 }
 
+
+#pragma mark - 外部调用方法
+
+
+/** 添加右侧辅助按钮 (数组形式 , 建议最多添加2个 ) */
+- (void)addAccessoryButtons:(NSArray *) accessoryButtons
+{
+    
+    if (accessoryButtons.count<1)
+    {
+        NSLog(@"[%s--第%d行]--[警告:按钮数组为空,请确认是否传入空数组!]",__func__,__LINE__);
+        self.accessoryButtons = nil;
+        return;
+    }
+    
+    if (accessoryButtons.count > 3)
+    {
+        NSLog(@"[%s--第%d行]--[警告:您传入的辅助按钮数量超过3个,建议最多只添加2个!]",__func__,__LINE__);
+    }
+    
+    self.accessoryButtons = nil;
+    NSMutableArray * array = [NSMutableArray array];
+    
+    for (UIButton * obj in accessoryButtons) {
+        
+        if (![obj isKindOfClass:[UIButton class]])
+        {
+            NSLog(@"[%s--第%d行]--[错误:请添加UIButton类型的按钮!如果需要自定义,可修改此处的代码!]",__func__,__LINE__);
+            return;
+        }
+        
+        [array addObject:obj];
+        [self addSubview:obj];
+        
+    }
+    
+    self.accessoryButtons = array;
+    
+}
+
+/** 设置导航栏中的控制器标题按钮字体颜色及尺寸 */
+- (void)setButtonTitleWithNomalColor : (UIColor *)nomalColor AndSelectedColor : (UIColor *)selectedColor AndTitleFont : (UIFont *)font
+{
+
+    if (nomalColor)
+        self.titleNomalColor = nomalColor;
+    
+    if (selectedColor)
+        self.titleSelectedColor = selectedColor;
+    
+    if (font)
+        self.titleFont = font;
+
+}
+
+
+/** 根据数组item的位置滚动下划线 (非特殊情况,不建议调用该方法) */
+- (void)scrollUnderLineFromLastIndex : (NSInteger)lastIndex ToNextIndex : (NSInteger)nextIndex
+{
+    /** 参数边界值判断 */
+    if (lastIndex >= self.titleButtons.count || nextIndex >= self.titleButtons.count || lastIndex < 0 || nextIndex < 0)
+    {
+        NSLog(@"[%s--第%d行]--[错误:输入的index有误!]",__func__,__LINE__);
+        return;
+    }
+    
+    /** 滚动到同个控制器 */
+    if (lastIndex == nextIndex)
+    {
+        UIButton * nextButton = self.titleButtons[nextIndex];
+        
+        self.underLine.frame = CGRectMake(nextButton.frame.origin.x , self.bounds.size.height - 2, nextButton.bounds.size.width, 2);
+    }
+    /** 滚动到两个item的中点 */
+    else if ((nextIndex - lastIndex) == 1)
+    {
+        UIButton * lastButton = self.titleButtons[lastIndex];
+        UIButton * nextButton = self.titleButtons[nextIndex];
+        
+        CGFloat x = lastButton.center.x;
+        CGFloat width = nextButton.center.x - lastButton.center.x;
+        
+        self.underLine.frame = CGRectMake(x, self.bounds.size.height - 2, width, 2);
+        
+    }
+    /** 滚动到下个控制器 */
+    else
+    {
+        UIButton * nextButton = self.titleButtons[nextIndex];
+        self.underLine.frame = CGRectMake(nextButton.frame.origin.x , self.bounds.size.height - 2, nextButton.bounds.size.width, 2);
+        
+    }
+    
+}
 
 
 @end

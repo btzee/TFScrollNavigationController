@@ -48,7 +48,7 @@
 
 
 
-/** 根据传进来的控制器数组进行初始化 */
+/** 根据传进来的控制器数组进行初始化 (本方法只为了拿到控制器的标题,不强引用控制器) */
 - (instancetype)initWithControllers : (NSArray *) controllers;
 
 /** 添加右侧辅助按钮 (数组形式 , 建议最多添加2个 ) */
@@ -59,6 +59,9 @@
 
 /** 根据数组item的位置滚动下划线 (非特殊情况,不建议调用该方法) */
 - (void)scrollUnderLineFromLastIndex : (NSInteger)lastIndex ToNextIndex : (NSInteger)nextIndex;
+
+/** 设置导航栏中的控制器标题按钮字体颜色及尺寸 */
+- (void)setButtonTitleWithNomalColor : (UIColor *)nomalColor AndSelectedColor : (UIColor *)selectedColor AndTitleFont : (UIFont *)font;
 
 
 @end
