@@ -56,6 +56,13 @@ static NSString * const selectedViewControllerName_KeyPath = @"selectedButton.ti
     return self;
 }
 
+/** 销毁方法 */
+- (void)dealloc
+{
+    /** 销毁时移除监听 */
+    [self.myNavigationBar removeObserver:self forKeyPath:selectedViewControllerName_KeyPath];
+}
+
 
 #pragma mark - KVO 监听方法
 
