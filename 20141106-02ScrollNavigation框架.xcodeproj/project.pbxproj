@@ -13,13 +13,13 @@
 		0429DBAA1A0B5FD300C7851C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0429DBA91A0B5FD300C7851C /* Images.xcassets */; };
 		0429DBAD1A0B5FD300C7851C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0429DBAB1A0B5FD300C7851C /* LaunchScreen.xib */; };
 		0429DBB91A0B5FD300C7851C /* _0141106_02ScrollNavigation__Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429DBB81A0B5FD300C7851C /* _0141106_02ScrollNavigation__Tests.m */; };
-		0429DBC81A0B62E000C7851C /* TFScrollNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429DBC71A0B62E000C7851C /* TFScrollNavigationController.m */; };
-		0429DBCB1A0B658F00C7851C /* TFScrollNavigationRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429DBCA1A0B658F00C7851C /* TFScrollNavigationRootViewController.m */; };
 		0429DBCF1A0B691700C7851C /* BTTestAController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429DBCE1A0B691700C7851C /* BTTestAController.m */; };
 		0429DBD21A0B70C800C7851C /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429DBD11A0B70C800C7851C /* TestViewController.m */; };
 		0429DBD51A0B77F500C7851C /* BTTestBController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429DBD41A0B77F500C7851C /* BTTestBController.m */; };
-		0429DBD81A0B7CE700C7851C /* TFScrollNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429DBD71A0B7CE700C7851C /* TFScrollNavigationBar.m */; };
 		0429DBDC1A0B9B4000C7851C /* UIColor+BTTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 0429DBDB1A0B9B4000C7851C /* UIColor+BTTools.m */; };
+		0449BF0E1A0ED721002D013C /* TFScrollNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0449BF091A0ED721002D013C /* TFScrollNavigationBar.m */; };
+		0449BF0F1A0ED721002D013C /* TFScrollNavigationRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0449BF0B1A0ED721002D013C /* TFScrollNavigationRootViewController.m */; };
+		0449BF101A0ED721002D013C /* TFScrollNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0449BF0D1A0ED721002D013C /* TFScrollNavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,20 +44,20 @@
 		0429DBB21A0B5FD300C7851C /* 20141106-02ScrollNavigation框架Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "20141106-02ScrollNavigation框架Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0429DBB71A0B5FD300C7851C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0429DBB81A0B5FD300C7851C /* _0141106_02ScrollNavigation__Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _0141106_02ScrollNavigation__Tests.m; sourceTree = "<group>"; };
-		0429DBC61A0B62E000C7851C /* TFScrollNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFScrollNavigationController.h; sourceTree = "<group>"; };
-		0429DBC71A0B62E000C7851C /* TFScrollNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFScrollNavigationController.m; sourceTree = "<group>"; };
-		0429DBC91A0B658F00C7851C /* TFScrollNavigationRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFScrollNavigationRootViewController.h; sourceTree = "<group>"; };
-		0429DBCA1A0B658F00C7851C /* TFScrollNavigationRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFScrollNavigationRootViewController.m; sourceTree = "<group>"; };
 		0429DBCD1A0B691700C7851C /* BTTestAController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTTestAController.h; sourceTree = "<group>"; };
 		0429DBCE1A0B691700C7851C /* BTTestAController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTTestAController.m; sourceTree = "<group>"; };
 		0429DBD01A0B70C800C7851C /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		0429DBD11A0B70C800C7851C /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		0429DBD31A0B77F500C7851C /* BTTestBController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTTestBController.h; sourceTree = "<group>"; };
 		0429DBD41A0B77F500C7851C /* BTTestBController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTTestBController.m; sourceTree = "<group>"; };
-		0429DBD61A0B7CE700C7851C /* TFScrollNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFScrollNavigationBar.h; sourceTree = "<group>"; };
-		0429DBD71A0B7CE700C7851C /* TFScrollNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFScrollNavigationBar.m; sourceTree = "<group>"; };
 		0429DBDA1A0B9B4000C7851C /* UIColor+BTTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BTTools.h"; sourceTree = "<group>"; };
 		0429DBDB1A0B9B4000C7851C /* UIColor+BTTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BTTools.m"; sourceTree = "<group>"; };
+		0449BF081A0ED721002D013C /* TFScrollNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFScrollNavigationBar.h; sourceTree = "<group>"; };
+		0449BF091A0ED721002D013C /* TFScrollNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFScrollNavigationBar.m; sourceTree = "<group>"; };
+		0449BF0A1A0ED721002D013C /* TFScrollNavigationRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFScrollNavigationRootViewController.h; sourceTree = "<group>"; };
+		0449BF0B1A0ED721002D013C /* TFScrollNavigationRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFScrollNavigationRootViewController.m; sourceTree = "<group>"; };
+		0449BF0C1A0ED721002D013C /* TFScrollNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFScrollNavigationController.h; sourceTree = "<group>"; };
+		0449BF0D1A0ED721002D013C /* TFScrollNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFScrollNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +99,9 @@
 		0429DB9B1A0B5FD300C7851C /* 20141106-02ScrollNavigation框架 */ = {
 			isa = PBXGroup;
 			children = (
+				0449BF061A0ED721002D013C /* TFScrollNavigationController */,
 				0429DBD91A0B9B4000C7851C /* UIColor */,
 				0429DBCC1A0B68EB00C7851C /* testView */,
-				0429DBC51A0B62E000C7851C /* TFScrollNavigationController */,
 				0429DBA01A0B5FD300C7851C /* AppDelegate.h */,
 				0429DBA11A0B5FD300C7851C /* AppDelegate.m */,
 				0429DBA91A0B5FD300C7851C /* Images.xcassets */,
@@ -140,19 +140,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0429DBC51A0B62E000C7851C /* TFScrollNavigationController */ = {
-			isa = PBXGroup;
-			children = (
-				0429DBC61A0B62E000C7851C /* TFScrollNavigationController.h */,
-				0429DBC71A0B62E000C7851C /* TFScrollNavigationController.m */,
-				0429DBC91A0B658F00C7851C /* TFScrollNavigationRootViewController.h */,
-				0429DBCA1A0B658F00C7851C /* TFScrollNavigationRootViewController.m */,
-				0429DBD61A0B7CE700C7851C /* TFScrollNavigationBar.h */,
-				0429DBD71A0B7CE700C7851C /* TFScrollNavigationBar.m */,
-			);
-			path = TFScrollNavigationController;
-			sourceTree = "<group>";
-		};
 		0429DBCC1A0B68EB00C7851C /* testView */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +158,27 @@
 				0429DBDB1A0B9B4000C7851C /* UIColor+BTTools.m */,
 			);
 			path = UIColor;
+			sourceTree = "<group>";
+		};
+		0449BF061A0ED721002D013C /* TFScrollNavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				0449BF071A0ED721002D013C /* subViews */,
+				0449BF0C1A0ED721002D013C /* TFScrollNavigationController.h */,
+				0449BF0D1A0ED721002D013C /* TFScrollNavigationController.m */,
+			);
+			path = TFScrollNavigationController;
+			sourceTree = "<group>";
+		};
+		0449BF071A0ED721002D013C /* subViews */ = {
+			isa = PBXGroup;
+			children = (
+				0449BF081A0ED721002D013C /* TFScrollNavigationBar.h */,
+				0449BF091A0ED721002D013C /* TFScrollNavigationBar.m */,
+				0449BF0A1A0ED721002D013C /* TFScrollNavigationRootViewController.h */,
+				0449BF0B1A0ED721002D013C /* TFScrollNavigationRootViewController.m */,
+			);
+			path = subViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,15 +281,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0429DBD81A0B7CE700C7851C /* TFScrollNavigationBar.m in Sources */,
 				0429DBD21A0B70C800C7851C /* TestViewController.m in Sources */,
 				0429DBA21A0B5FD300C7851C /* AppDelegate.m in Sources */,
-				0429DBCB1A0B658F00C7851C /* TFScrollNavigationRootViewController.m in Sources */,
+				0449BF0E1A0ED721002D013C /* TFScrollNavigationBar.m in Sources */,
 				0429DBDC1A0B9B4000C7851C /* UIColor+BTTools.m in Sources */,
 				0429DBD51A0B77F500C7851C /* BTTestBController.m in Sources */,
+				0449BF101A0ED721002D013C /* TFScrollNavigationController.m in Sources */,
+				0449BF0F1A0ED721002D013C /* TFScrollNavigationRootViewController.m in Sources */,
 				0429DB9F1A0B5FD300C7851C /* main.m in Sources */,
 				0429DBCF1A0B691700C7851C /* BTTestAController.m in Sources */,
-				0429DBC81A0B62E000C7851C /* TFScrollNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

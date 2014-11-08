@@ -11,6 +11,7 @@
 
 #define Default_Selected_Color [UIColor colorWithRed:0/255.0 green:122/255.0 blue:255/255.0 alpha:1]
 #define Default_Nomal_Color [UIColor whiteColor]
+#define DurationTime 0.3
 
 /** 按钮标题文字之间的间距 */
 #define Button_Inset 20.0
@@ -474,7 +475,7 @@
         scrollOffset = self.titleScrollView.contentSize.width - self.titleScrollView.bounds.size.width;
     
     /** 以动画形式滚动 */
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:DurationTime animations:^{
    
         self.titleScrollView.contentOffset = CGPointMake(scrollOffset, self.titleScrollView.contentOffset.y);
         
@@ -560,44 +561,25 @@
 }
 
 
-/** 根据数组item的位置滚动下划线 (非特殊情况,不建议调用该方法) */
-- (void)scrollUnderLineFromLastIndex : (NSInteger)lastIndex ToNextIndex : (NSInteger)nextIndex
+
+
+/** 根据数组item的位置及比例滚动下划线 */
+- (void)scrollUnderLineToItemAtIndex : (NSInteger)index WithScale : (CGFloat)scale
 {
     /** 参数边界值判断 */
-    if (lastIndex >= self.titleButtons.count || nextIndex >= self.titleButtons.count || lastIndex < 0 || nextIndex < 0)
+    if (index >= self.titleButtons.count || index < 0 )
     {
         NSLog(@"[%s--第%d行]--[错误:输入的index有误!]",__func__,__LINE__);
         return;
     }
     
-    /** 滚动到同个控制器 */
-    if (lastIndex == nextIndex)
-    {
-        UIButton * nextButton = self.titleButtons[nextIndex];
-        
-        self.underLine.frame = CGRectMake(nextButton.frame.origin.x , self.bounds.size.height - 2, nextButton.bounds.size.width, 2);
-    }
-    /** 滚动到两个item的中点 */
-    else if ((nextIndex - lastIndex) == 1)
-    {
-        UIButton * lastButton = self.titleButtons[lastIndex];
-        UIButton * nextButton = self.titleButtons[nextIndex];
-        
-        CGFloat x = lastButton.center.x;
-        CGFloat width = nextButton.center.x - lastButton.center.x;
-        
-        self.underLine.frame = CGRectMake(x, self.bounds.size.height - 2, width, 2);
-        
-    }
-    /** 滚动到下个控制器 */
-    else
-    {
-        UIButton * nextButton = self.titleButtons[nextIndex];
-        self.underLine.frame = CGRectMake(nextButton.frame.origin.x , self.bounds.size.height - 2, nextButton.bounds.size.width, 2);
-        
-    }
+    UIButton * tempButton = self.titleButtons[index];
+    CGRect tempFrame = tempButton.frame;
     
+    
+    self.underLine.frame = CGRectMake(tempFrame.origin.x + tempFrame.size.width * scale , self.bounds.size.height - 2, self.underLine.frame.size.width, 2);
 }
+
 
 
 @end

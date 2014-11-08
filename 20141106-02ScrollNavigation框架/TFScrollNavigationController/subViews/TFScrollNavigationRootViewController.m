@@ -118,7 +118,6 @@ static NSString * const selectedViewControllerName_KeyPath = @"selectedButton.ti
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor redColor];
    
 }
 
@@ -189,21 +188,42 @@ static NSString * const selectedViewControllerName_KeyPath = @"selectedButton.ti
 }
 
 
-#warning 这里的算法还需要改进 . 目前滚动到中点的处理方式 在实际滚动的时候会让用户误以为卡顿效果.
 /** 根据比例滚动tabBar的下划线 */
 - (void)scrollMyTabBarUnderLine
 {
+  
     if (self.contentScrollView.contentSize.width > 0)
     {
+        CGPoint offSet = self.contentScrollView.contentOffset;
         
-        NSInteger indexNow = self.contentScrollView.contentOffset.x / self.contentScrollView.bounds.size.width;
-        NSInteger indexNext = self.contentScrollView.contentOffset.x / self.contentScrollView.bounds.size.width + 0.5;
+        if (offSet.x < 0 || offSet.x > (self.contentScrollView.contentSize.width - self.contentScrollView.bounds.size.width))
+            return;
         
-        //NSLog(@"%ld -- %ld", indexNow,indexNext);
+        /** 记录当前偏移点在哪个控制器上 */
+        NSInteger i = 0;
         
-        [self.myNavigationBar scrollUnderLineFromLastIndex:indexNow ToNextIndex:indexNext];
+        for( i = 0 ; i < self.childViewControllers.count ; i++)
+        {
+            UIViewController * tempVC = self.childViewControllers[i];
+            
+            CGRect tempRect = tempVC.view.frame;
+            
+            BOOL isContain = CGRectContainsPoint(tempRect, offSet);
+            
+            if (isContain)
+            {
+                break;
+            }
+        }
         
+        /** 记录当前偏移点在控制器上的比例 */
+        CGFloat scale = ((NSInteger)offSet.x % (NSInteger)self.contentScrollView.bounds.size.width) / self.contentScrollView.bounds.size.width;
+        
+        /** 根据数组item的位置及比例滚动下划线 */
+        [self.myNavigationBar scrollUnderLineToItemAtIndex:i WithScale:scale];
+    
     }
+      
 }
 
 
