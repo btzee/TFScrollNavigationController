@@ -13,7 +13,8 @@
         
         1. 导入头文件 : #import "TFScrollNavigationController.h"
  
-        2. 先将要添加的其他控制器组 初始化完成 , 并添加进数组. 例: array = @[ [[UIViewController alloc] init] , ... ];
+        2. 1> 先将要添加的其他控制器组 初始化完成 , 并添加进数组. 例: array = @[ [[UIViewController alloc] init] , ... ];
+           2> 再设置每个控制器的标题,该标题就是控制器显示在导航栏上的标题. 例 : (UIViewController *)(array[0]).title = @"测试文字";
  
         3. 根据创建的控制器数组初始化本滚动导航控制器 . 例: TFScrollNavigationController * svc = [[TFScrollNavigationController alloc] initWithControllers:array];
  
