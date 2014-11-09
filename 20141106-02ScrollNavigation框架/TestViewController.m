@@ -9,7 +9,7 @@
 #import "TestViewController.h"
 #import "TFScrollNavigationController.h"
 #import "BTTestAController.h"
-
+#import "UIColor+BTTools.h"
 @interface TestViewController ()
 @property (weak, nonatomic) IBOutlet UIView *testView;
 
@@ -19,13 +19,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+ 
+#warning 这是测试用的界面
+
     BTTestAController * VC1 = [[BTTestAController alloc] init];
-    BTTestAController * VC2 = [[BTTestAController alloc] init];
+    UIViewController * VC2 = [[UIViewController alloc] init];
     BTTestAController * VC3 = [[BTTestAController alloc] init];
-    BTTestAController * VC4 = [[BTTestAController alloc] init];
+    UIViewController * VC4 = [[UIViewController alloc] init];
     BTTestAController * VC5 = [[BTTestAController alloc] init];
-    BTTestAController * VC6 = [[BTTestAController alloc] init];
+    UIViewController * VC6 = [[UIViewController alloc] init];
     BTTestAController * VC7 = [[BTTestAController alloc] init];
     BTTestAController * VC8 = [[BTTestAController alloc] init];
     
@@ -38,9 +40,11 @@
     VC7.title = @"第七个";
     VC8.title = @"第八个";
     
-    NSArray * array = @[VC1,VC2,VC3,VC4,VC5,VC6,VC7,VC8];
+    NSArray * controllersArray = @[VC1,VC2,VC3,VC4,VC5,VC6,VC7,VC8];
 
-    TFScrollNavigationController * sc = [[TFScrollNavigationController alloc] initWithControllers:array];
+    for (UIViewController * obj in controllersArray) {
+        obj.view.backgroundColor = BTRandomColor;
+    }
     
 #warning 这是测试用的button
     
@@ -49,12 +53,19 @@
     UIButton * button3 = [UIButton buttonWithType:UIButtonTypeContactAdd];
     UIButton * button4 = [UIButton buttonWithType:UIButtonTypeContactAdd];
     
-    [sc addTabBarAccessoryButtons:@[button1]];
+    [button1 addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
+
+    
+    NSArray * buttonsArray = @[button1];
+    
+    
+    TFScrollNavigationController * sc = [[TFScrollNavigationController alloc] initWithControllers:controllersArray];
+
+    [sc addTabBarAccessoryButtons:buttonsArray];
     
     [sc setContentBackgrondColor:[UIColor blueColor]];
-    [sc setTabBarBackgrondColor:[UIColor yellowColor]];
+    [sc setTabBarBackgrondColor:[UIColor redColor]];
     //[sc setTabBarTitleWithNomalColor:[UIColor blackColor] AndSelectedColor:[UIColor redColor] AndTitleFont:[UIFont systemFontOfSize:17]];
-    
     
     [self addChildViewController:sc];
     
@@ -63,19 +74,11 @@
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+- (void)clickButton : (UIButton *)button
+{
+    NSLog(@"[%s--第%d行]--[点击了测试按钮%@]",__func__,__LINE__,button);
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

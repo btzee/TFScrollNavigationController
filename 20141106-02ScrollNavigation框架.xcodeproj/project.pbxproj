@@ -20,6 +20,7 @@
 		0449BF0E1A0ED721002D013C /* TFScrollNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0449BF091A0ED721002D013C /* TFScrollNavigationBar.m */; };
 		0449BF0F1A0ED721002D013C /* TFScrollNavigationRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0449BF0B1A0ED721002D013C /* TFScrollNavigationRootViewController.m */; };
 		0449BF101A0ED721002D013C /* TFScrollNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0449BF0D1A0ED721002D013C /* TFScrollNavigationController.m */; };
+		045D97B81A0F15480007689A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 045D97B71A0F15480007689A /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		0449BF0B1A0ED721002D013C /* TFScrollNavigationRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFScrollNavigationRootViewController.m; sourceTree = "<group>"; };
 		0449BF0C1A0ED721002D013C /* TFScrollNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFScrollNavigationController.h; sourceTree = "<group>"; };
 		0449BF0D1A0ED721002D013C /* TFScrollNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFScrollNavigationController.m; sourceTree = "<group>"; };
+		045D97B71A0F15480007689A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,10 +104,6 @@
 				0449BF061A0ED721002D013C /* TFScrollNavigationController */,
 				0429DBD91A0B9B4000C7851C /* UIColor */,
 				0429DBCC1A0B68EB00C7851C /* testView */,
-				0429DBA01A0B5FD300C7851C /* AppDelegate.h */,
-				0429DBA11A0B5FD300C7851C /* AppDelegate.m */,
-				0429DBA91A0B5FD300C7851C /* Images.xcassets */,
-				0429DBAB1A0B5FD300C7851C /* LaunchScreen.xib */,
 				0429DBD01A0B70C800C7851C /* TestViewController.h */,
 				0429DBD11A0B70C800C7851C /* TestViewController.m */,
 				0429DB9C1A0B5FD300C7851C /* Supporting Files */,
@@ -116,6 +114,10 @@
 		0429DB9C1A0B5FD300C7851C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				045D97B71A0F15480007689A /* README.md */,
+				045D97B61A0F15210007689A /* other */,
+				0429DBA91A0B5FD300C7851C /* Images.xcassets */,
+				0429DBAB1A0B5FD300C7851C /* LaunchScreen.xib */,
 				0429DBA61A0B5FD300C7851C /* Main.storyboard */,
 				0429DB9D1A0B5FD300C7851C /* Info.plist */,
 				0429DB9E1A0B5FD300C7851C /* main.m */,
@@ -179,6 +181,15 @@
 				0449BF0B1A0ED721002D013C /* TFScrollNavigationRootViewController.m */,
 			);
 			path = subViews;
+			sourceTree = "<group>";
+		};
+		045D97B61A0F15210007689A /* other */ = {
+			isa = PBXGroup;
+			children = (
+				0429DBA01A0B5FD300C7851C /* AppDelegate.h */,
+				0429DBA11A0B5FD300C7851C /* AppDelegate.m */,
+			);
+			name = other;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,6 +294,7 @@
 			files = (
 				0429DBD21A0B70C800C7851C /* TestViewController.m in Sources */,
 				0429DBA21A0B5FD300C7851C /* AppDelegate.m in Sources */,
+				045D97B81A0F15480007689A /* README.md in Sources */,
 				0449BF0E1A0ED721002D013C /* TFScrollNavigationBar.m in Sources */,
 				0429DBDC1A0B9B4000C7851C /* UIColor+BTTools.m in Sources */,
 				0429DBD51A0B77F500C7851C /* BTTestBController.m in Sources */,

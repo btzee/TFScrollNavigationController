@@ -40,7 +40,7 @@
     [super viewWillAppear:animated];
     
     /** 显示系统自带导航栏 */
-    //self.navigationController.navigationBar.hidden = NO ;
+    self.navigationController.navigationBar.hidden = NO ;
     
     NSLog(@"%@",NSStringFromCGRect(self.navigationController.navigationBar.frame));
     
